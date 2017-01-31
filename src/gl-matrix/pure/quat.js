@@ -18,7 +18,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE. */
 
-var glMatrix = require("./common.js");
+var glMatrix = require("../common.js");
 var mat3 = require("./mat3.js");
 var vec3 = require("./vec3.js");
 var vec4 = require("./vec4.js");
