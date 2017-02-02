@@ -21,12 +21,15 @@ THE SOFTWARE. */
 var fs = require('fs');
 var webpack = require('webpack');
 
-var entryFile = './src/gl-matrix.js';
+var entryFiles = {
+  'gl-matrix' : './src/gl-matrix.js',
+  'gl-matrix-pure': './src/gl-matrix-pure.js'
+}
 
 // Read the comments from the top of the main gl-matrix file and append them to
 // the minified version.
 var header = '';
-var mainFile = fs.readFileSync(entryFile, { encoding: 'utf8' });
+var mainFile = fs.readFileSync(entryFiles['gl-matrix'], { encoding: 'utf8' });
 if (mainFile) {
   var headerIndex = mainFile.indexOf('\/\/ END HEADER');
   if (headerIndex >= 0) {
@@ -35,10 +38,10 @@ if (mainFile) {
 }
 
 module.exports = {
-  entry: entryFile,
+  entry: entryFiles,
   output: {
     path: __dirname + '/dist',
-    filename: 'gl-matrix.js',
+    filename: '[name].js',
     libraryTarget: 'umd'
   },
   plugins: [

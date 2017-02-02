@@ -90,34 +90,34 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
-	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files (the "Software"), to deal
-	in the Software without restriction, including without limitation the rights
-	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	copies of the Software, and to permit persons to whom the Software is
-	furnished to do so, subject to the following conditions:
+	 Permission is hereby granted, free of charge, to any person obtaining a copy
+	 of this software and associated documentation files (the "Software"), to deal
+	 in the Software without restriction, including without limitation the rights
+	 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	 copies of the Software, and to permit persons to whom the Software is
+	 furnished to do so, subject to the following conditions:
 
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
+	 The above copyright notice and this permission notice shall be included in
+	 all copies or substantial portions of the Software.
 
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	THE SOFTWARE. */
+	 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+	 THE SOFTWARE. */
 	// END HEADER
 
 	exports.glMatrix = __webpack_require__(1);
-	exports.mat2 = __webpack_require__(2);
-	exports.mat2d = __webpack_require__(3);
-	exports.mat3 = __webpack_require__(4);
-	exports.mat4 = __webpack_require__(5);
-	exports.quat = __webpack_require__(6);
-	exports.vec2 = __webpack_require__(9);
-	exports.vec3 = __webpack_require__(7);
-	exports.vec4 = __webpack_require__(8);
+	exports.mat2 = __webpack_require__(10);
+	exports.mat2d = __webpack_require__(11);
+	exports.mat3 = __webpack_require__(12);
+	exports.mat4 = __webpack_require__(13);
+	exports.quat = __webpack_require__(14);
+	exports.vec2 = __webpack_require__(17);
+	exports.vec3 = __webpack_require__(15);
+	exports.vec4 = __webpack_require__(16);
 
 /***/ },
 /* 1 */
@@ -196,7 +196,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 2 */
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
@@ -259,11 +267,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Copy the values from one mat2 to another
 	 *
-	 * @param {mat2} out the receiving matrix
 	 * @param {mat2} a the source matrix
 	 * @returns {mat2} out
 	 */
-	mat2.copy = function(out, a) {
+	mat2.copy = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    out[0] = a[0];
 	    out[1] = a[1];
 	    out[2] = a[2];
@@ -274,10 +282,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Set a mat2 to the identity matrix
 	 *
-	 * @param {mat2} out the receiving matrix
 	 * @returns {mat2} out
 	 */
-	mat2.identity = function(out) {
+	mat2.identity = function() {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    out[0] = 1;
 	    out[1] = 0;
 	    out[2] = 0;
@@ -306,14 +314,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Set the components of a mat2 to the given values
 	 *
-	 * @param {mat2} out the receiving matrix
 	 * @param {Number} m00 Component in column 0, row 0 position (index 0)
 	 * @param {Number} m01 Component in column 0, row 1 position (index 1)
 	 * @param {Number} m10 Component in column 1, row 0 position (index 2)
 	 * @param {Number} m11 Component in column 1, row 1 position (index 3)
 	 * @returns {mat2} out
 	 */
-	mat2.set = function(out, m00, m01, m10, m11) {
+	mat2.set = function(m00, m01, m10, m11) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    out[0] = m00;
 	    out[1] = m01;
 	    out[2] = m10;
@@ -325,11 +333,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Transpose the values of a mat2
 	 *
-	 * @param {mat2} out the receiving matrix
 	 * @param {mat2} a the source matrix
 	 * @returns {mat2} out
 	 */
-	mat2.transpose = function(out, a) {
+	mat2.transpose = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    // If we are transposing ourselves we can skip a few steps but have to cache some values
 	    if (out === a) {
 	        var a1 = a[1];
@@ -348,11 +356,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Inverts a mat2
 	 *
-	 * @param {mat2} out the receiving matrix
 	 * @param {mat2} a the source matrix
 	 * @returns {mat2} out
 	 */
-	mat2.invert = function(out, a) {
+	mat2.invert = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3],
 
 	        // Calculate the determinant
@@ -374,11 +382,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Calculates the adjugate of a mat2
 	 *
-	 * @param {mat2} out the receiving matrix
 	 * @param {mat2} a the source matrix
 	 * @returns {mat2} out
 	 */
-	mat2.adjoint = function(out, a) {
+	mat2.adjoint = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    // Caching this value is nessecary if out == a
 	    var a0 = a[0];
 	    out[0] =  a[3];
@@ -402,12 +410,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Multiplies two mat2's
 	 *
-	 * @param {mat2} out the receiving matrix
 	 * @param {mat2} a the first operand
 	 * @param {mat2} b the second operand
 	 * @returns {mat2} out
 	 */
-	mat2.multiply = function (out, a, b) {
+	mat2.multiply = function (a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3];
 	    var b0 = b[0], b1 = b[1], b2 = b[2], b3 = b[3];
 	    out[0] = a0 * b0 + a2 * b1;
@@ -426,12 +434,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Rotates a mat2 by the given angle
 	 *
-	 * @param {mat2} out the receiving matrix
 	 * @param {mat2} a the matrix to rotate
 	 * @param {Number} rad the angle to rotate the matrix by
 	 * @returns {mat2} out
 	 */
-	mat2.rotate = function (out, a, rad) {
+	mat2.rotate = function (a, rad) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3],
 	        s = Math.sin(rad),
 	        c = Math.cos(rad);
@@ -445,12 +453,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Scales the mat2 by the dimensions in the given vec2
 	 *
-	 * @param {mat2} out the receiving matrix
 	 * @param {mat2} a the matrix to rotate
 	 * @param {vec2} v the vec2 to scale the matrix by
 	 * @returns {mat2} out
 	 **/
-	mat2.scale = function(out, a, v) {
+	mat2.scale = function(a, v) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3],
 	        v0 = v[0], v1 = v[1];
 	    out[0] = a0 * v0;
@@ -467,11 +475,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *     mat2.identity(dest);
 	 *     mat2.rotate(dest, dest, rad);
 	 *
-	 * @param {mat2} out mat2 receiving operation result
 	 * @param {Number} rad the angle to rotate the matrix by
 	 * @returns {mat2} out
 	 */
-	mat2.fromRotation = function(out, rad) {
+	mat2.fromRotation = function(rad) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    var s = Math.sin(rad),
 	        c = Math.cos(rad);
 	    out[0] = c;
@@ -488,11 +496,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *     mat2.identity(dest);
 	 *     mat2.scale(dest, dest, vec);
 	 *
-	 * @param {mat2} out mat2 receiving operation result
 	 * @param {vec2} v Scaling vector
 	 * @returns {mat2} out
 	 */
-	mat2.fromScaling = function(out, v) {
+	mat2.fromScaling = function(v) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    out[0] = v[0];
 	    out[1] = 0;
 	    out[2] = 0;
@@ -528,7 +536,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {mat2} a the input matrix to factorize
 	 */
 
-	mat2.LDU = function (L, D, U, a) { 
+	mat2.LDU = function (a) {
+	    var L = new glMatrix.ARRAY_TYPE(4);
+	    var D = new glMatrix.ARRAY_TYPE(4);
+	    var U = new glMatrix.ARRAY_TYPE(4);
 	    L[2] = a[2]/a[0]; 
 	    U[0] = a[0]; 
 	    U[1] = a[1]; 
@@ -539,12 +550,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Adds two mat2's
 	 *
-	 * @param {mat2} out the receiving matrix
+
 	 * @param {mat2} a the first operand
 	 * @param {mat2} b the second operand
 	 * @returns {mat2} out
 	 */
-	mat2.add = function(out, a, b) {
+	mat2.add = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    out[0] = a[0] + b[0];
 	    out[1] = a[1] + b[1];
 	    out[2] = a[2] + b[2];
@@ -555,12 +567,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Subtracts matrix b from matrix a
 	 *
-	 * @param {mat2} out the receiving matrix
+
 	 * @param {mat2} a the first operand
 	 * @param {mat2} b the second operand
 	 * @returns {mat2} out
 	 */
-	mat2.subtract = function(out, a, b) {
+	mat2.subtract = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    out[0] = a[0] - b[0];
 	    out[1] = a[1] - b[1];
 	    out[2] = a[2] - b[2];
@@ -604,12 +617,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Multiply each element of the matrix by a scalar.
 	 *
-	 * @param {mat2} out the receiving matrix
+
 	 * @param {mat2} a the matrix to scale
 	 * @param {Number} b amount to scale the matrix's elements by
 	 * @returns {mat2} out
 	 */
-	mat2.multiplyScalar = function(out, a, b) {
+	mat2.multiplyScalar = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    out[0] = a[0] * b;
 	    out[1] = a[1] * b;
 	    out[2] = a[2] * b;
@@ -626,7 +640,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {Number} scale the amount to scale b's elements by before adding
 	 * @returns {mat2} out
 	 */
-	mat2.multiplyScalarAndAdd = function(out, a, b, scale) {
+	mat2.multiplyScalarAndAdd = function(a, b, scale) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    out[0] = a[0] + (b[0] * scale);
 	    out[1] = a[1] + (b[1] * scale);
 	    out[2] = a[2] + (b[2] * scale);
@@ -638,7 +653,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 3 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
@@ -719,11 +734,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Copy the values from one mat2d to another
 	 *
-	 * @param {mat2d} out the receiving matrix
 	 * @param {mat2d} a the source matrix
 	 * @returns {mat2d} out
 	 */
-	mat2d.copy = function(out, a) {
+	mat2d.copy = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(6);
 	    out[0] = a[0];
 	    out[1] = a[1];
 	    out[2] = a[2];
@@ -736,10 +751,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Set a mat2d to the identity matrix
 	 *
-	 * @param {mat2d} out the receiving matrix
+
 	 * @returns {mat2d} out
 	 */
-	mat2d.identity = function(out) {
+	mat2d.identity = function() {
+	    var out = new glMatrix.ARRAY_TYPE(6);
 	    out[0] = 1;
 	    out[1] = 0;
 	    out[2] = 0;
@@ -774,7 +790,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Set the components of a mat2d to the given values
 	 *
-	 * @param {mat2d} out the receiving matrix
 	 * @param {Number} a Component A (index 0)
 	 * @param {Number} b Component B (index 1)
 	 * @param {Number} c Component C (index 2)
@@ -783,7 +798,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {Number} ty Component TY (index 5)
 	 * @returns {mat2d} out
 	 */
-	mat2d.set = function(out, a, b, c, d, tx, ty) {
+	mat2d.set = function(a, b, c, d, tx, ty) {
+	    var out = new glMatrix.ARRAY_TYPE(6);
 	    out[0] = a;
 	    out[1] = b;
 	    out[2] = c;
@@ -796,11 +812,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Inverts a mat2d
 	 *
-	 * @param {mat2d} out the receiving matrix
 	 * @param {mat2d} a the source matrix
 	 * @returns {mat2d} out
 	 */
-	mat2d.invert = function(out, a) {
+	mat2d.invert = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(6);
 	    var aa = a[0], ab = a[1], ac = a[2], ad = a[3],
 	        atx = a[4], aty = a[5];
 
@@ -832,12 +848,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Multiplies two mat2d's
 	 *
-	 * @param {mat2d} out the receiving matrix
 	 * @param {mat2d} a the first operand
 	 * @param {mat2d} b the second operand
 	 * @returns {mat2d} out
 	 */
-	mat2d.multiply = function (out, a, b) {
+	mat2d.multiply = function (a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(6);
 	    var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3], a4 = a[4], a5 = a[5],
 	        b0 = b[0], b1 = b[1], b2 = b[2], b3 = b[3], b4 = b[4], b5 = b[5];
 	    out[0] = a0 * b0 + a2 * b1;
@@ -858,12 +874,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Rotates a mat2d by the given angle
 	 *
-	 * @param {mat2d} out the receiving matrix
 	 * @param {mat2d} a the matrix to rotate
 	 * @param {Number} rad the angle to rotate the matrix by
 	 * @returns {mat2d} out
 	 */
-	mat2d.rotate = function (out, a, rad) {
+	mat2d.rotate = function (a, rad) {
+	    var out = new glMatrix.ARRAY_TYPE(6);
 	    var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3], a4 = a[4], a5 = a[5],
 	        s = Math.sin(rad),
 	        c = Math.cos(rad);
@@ -879,12 +895,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Scales the mat2d by the dimensions in the given vec2
 	 *
-	 * @param {mat2d} out the receiving matrix
 	 * @param {mat2d} a the matrix to translate
 	 * @param {vec2} v the vec2 to scale the matrix by
 	 * @returns {mat2d} out
 	 **/
-	mat2d.scale = function(out, a, v) {
+	mat2d.scale = function(a, v) {
+	    var out = new glMatrix.ARRAY_TYPE(6);
 	    var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3], a4 = a[4], a5 = a[5],
 	        v0 = v[0], v1 = v[1];
 	    out[0] = a0 * v0;
@@ -899,12 +915,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Translates the mat2d by the dimensions in the given vec2
 	 *
-	 * @param {mat2d} out the receiving matrix
 	 * @param {mat2d} a the matrix to translate
 	 * @param {vec2} v the vec2 to translate the matrix by
 	 * @returns {mat2d} out
 	 **/
-	mat2d.translate = function(out, a, v) {
+	mat2d.translate = function(a, v) {
+	    var out = new glMatrix.ARRAY_TYPE(6);
 	    var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3], a4 = a[4], a5 = a[5],
 	        v0 = v[0], v1 = v[1];
 	    out[0] = a0;
@@ -923,11 +939,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *     mat2d.identity(dest);
 	 *     mat2d.rotate(dest, dest, rad);
 	 *
-	 * @param {mat2d} out mat2d receiving operation result
 	 * @param {Number} rad the angle to rotate the matrix by
 	 * @returns {mat2d} out
 	 */
-	mat2d.fromRotation = function(out, rad) {
+	mat2d.fromRotation = function(rad) {
+	    var out = new glMatrix.ARRAY_TYPE(6);
 	    var s = Math.sin(rad), c = Math.cos(rad);
 	    out[0] = c;
 	    out[1] = s;
@@ -936,7 +952,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    out[4] = 0;
 	    out[5] = 0;
 	    return out;
-	}
+	};
 
 	/**
 	 * Creates a matrix from a vector scaling
@@ -945,11 +961,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *     mat2d.identity(dest);
 	 *     mat2d.scale(dest, dest, vec);
 	 *
-	 * @param {mat2d} out mat2d receiving operation result
 	 * @param {vec2} v Scaling vector
 	 * @returns {mat2d} out
 	 */
-	mat2d.fromScaling = function(out, v) {
+	mat2d.fromScaling = function(v) {
+	    var out = new glMatrix.ARRAY_TYPE(6);
 	    out[0] = v[0];
 	    out[1] = 0;
 	    out[2] = 0;
@@ -957,7 +973,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    out[4] = 0;
 	    out[5] = 0;
 	    return out;
-	}
+	};
 
 	/**
 	 * Creates a matrix from a vector translation
@@ -966,11 +982,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *     mat2d.identity(dest);
 	 *     mat2d.translate(dest, dest, vec);
 	 *
-	 * @param {mat2d} out mat2d receiving operation result
 	 * @param {vec2} v Translation vector
 	 * @returns {mat2d} out
 	 */
-	mat2d.fromTranslation = function(out, v) {
+	mat2d.fromTranslation = function(v) {
+	    var out = new glMatrix.ARRAY_TYPE(6);
 	    out[0] = 1;
 	    out[1] = 0;
 	    out[2] = 0;
@@ -978,7 +994,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    out[4] = v[0];
 	    out[5] = v[1];
 	    return out;
-	}
+	};
 
 	/**
 	 * Returns a string representation of a mat2d
@@ -1004,12 +1020,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Adds two mat2d's
 	 *
-	 * @param {mat2d} out the receiving matrix
 	 * @param {mat2d} a the first operand
 	 * @param {mat2d} b the second operand
 	 * @returns {mat2d} out
 	 */
-	mat2d.add = function(out, a, b) {
+	mat2d.add = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(6);
 	    out[0] = a[0] + b[0];
 	    out[1] = a[1] + b[1];
 	    out[2] = a[2] + b[2];
@@ -1022,12 +1038,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Subtracts matrix b from matrix a
 	 *
-	 * @param {mat2d} out the receiving matrix
 	 * @param {mat2d} a the first operand
 	 * @param {mat2d} b the second operand
 	 * @returns {mat2d} out
 	 */
-	mat2d.subtract = function(out, a, b) {
+	mat2d.subtract = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(6);
 	    out[0] = a[0] - b[0];
 	    out[1] = a[1] - b[1];
 	    out[2] = a[2] - b[2];
@@ -1046,12 +1062,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Multiply each element of the matrix by a scalar.
 	 *
-	 * @param {mat2d} out the receiving matrix
 	 * @param {mat2d} a the matrix to scale
 	 * @param {Number} b amount to scale the matrix's elements by
 	 * @returns {mat2d} out
 	 */
-	mat2d.multiplyScalar = function(out, a, b) {
+	mat2d.multiplyScalar = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(6);
 	    out[0] = a[0] * b;
 	    out[1] = a[1] * b;
 	    out[2] = a[2] * b;
@@ -1064,13 +1080,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Adds two mat2d's after multiplying each element of the second operand by a scalar value.
 	 *
-	 * @param {mat2d} out the receiving vector
 	 * @param {mat2d} a the first operand
 	 * @param {mat2d} b the second operand
 	 * @param {Number} scale the amount to scale b's elements by before adding
 	 * @returns {mat2d} out
 	 */
-	mat2d.multiplyScalarAndAdd = function(out, a, b, scale) {
+	mat2d.multiplyScalarAndAdd = function(a, b, scale) {
+	    var out = new glMatrix.ARRAY_TYPE(6);
 	    out[0] = a[0] + (b[0] * scale);
 	    out[1] = a[1] + (b[1] * scale);
 	    out[2] = a[2] + (b[2] * scale);
@@ -1113,7 +1129,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 4 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
@@ -1166,11 +1182,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Copies the upper-left 3x3 values into the given mat3.
 	 *
-	 * @param {mat3} out the receiving 3x3 matrix
 	 * @param {mat4} a   the source 4x4 matrix
 	 * @returns {mat3} out
 	 */
-	mat3.fromMat4 = function(out, a) {
+	mat3.fromMat4 = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(9);
 	    out[0] = a[0];
 	    out[1] = a[1];
 	    out[2] = a[2];
@@ -1206,11 +1222,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Copy the values from one mat3 to another
 	 *
-	 * @param {mat3} out the receiving matrix
 	 * @param {mat3} a the source matrix
 	 * @returns {mat3} out
 	 */
-	mat3.copy = function(out, a) {
+	mat3.copy = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(9);
 	    out[0] = a[0];
 	    out[1] = a[1];
 	    out[2] = a[2];
@@ -1254,7 +1270,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Set the components of a mat3 to the given values
 	 *
-	 * @param {mat3} out the receiving matrix
 	 * @param {Number} m00 Component in column 0, row 0 position (index 0)
 	 * @param {Number} m01 Component in column 0, row 1 position (index 1)
 	 * @param {Number} m02 Component in column 0, row 2 position (index 2)
@@ -1266,7 +1281,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {Number} m22 Component in column 2, row 2 position (index 8)
 	 * @returns {mat3} out
 	 */
-	mat3.set = function(out, m00, m01, m02, m10, m11, m12, m20, m21, m22) {
+	mat3.set = function(m00, m01, m02, m10, m11, m12, m20, m21, m22) {
+	    var out = new glMatrix.ARRAY_TYPE(9);
 	    out[0] = m00;
 	    out[1] = m01;
 	    out[2] = m02;
@@ -1282,10 +1298,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Set a mat3 to the identity matrix
 	 *
-	 * @param {mat3} out the receiving matrix
 	 * @returns {mat3} out
 	 */
-	mat3.identity = function(out) {
+	mat3.identity = function() {
+	    var out = new glMatrix.ARRAY_TYPE(9);
 	    out[0] = 1;
 	    out[1] = 0;
 	    out[2] = 0;
@@ -1301,11 +1317,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Transpose the values of a mat3
 	 *
-	 * @param {mat3} out the receiving matrix
 	 * @param {mat3} a the source matrix
 	 * @returns {mat3} out
 	 */
-	mat3.transpose = function(out, a) {
+	mat3.transpose = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(9);
 	    // If we are transposing ourselves we can skip a few steps but have to cache some values
 	    if (out === a) {
 	        var a01 = a[1], a02 = a[2], a12 = a[5];
@@ -1333,11 +1349,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Inverts a mat3
 	 *
-	 * @param {mat3} out the receiving matrix
 	 * @param {mat3} a the source matrix
 	 * @returns {mat3} out
 	 */
-	mat3.invert = function(out, a) {
+	mat3.invert = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(9);
 	    var a00 = a[0], a01 = a[1], a02 = a[2],
 	        a10 = a[3], a11 = a[4], a12 = a[5],
 	        a20 = a[6], a21 = a[7], a22 = a[8],
@@ -1369,11 +1385,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Calculates the adjugate of a mat3
 	 *
-	 * @param {mat3} out the receiving matrix
 	 * @param {mat3} a the source matrix
 	 * @returns {mat3} out
 	 */
-	mat3.adjoint = function(out, a) {
+	mat3.adjoint = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(9);
 	    var a00 = a[0], a01 = a[1], a02 = a[2],
 	        a10 = a[3], a11 = a[4], a12 = a[5],
 	        a20 = a[6], a21 = a[7], a22 = a[8];
@@ -1407,12 +1423,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Multiplies two mat3's
 	 *
-	 * @param {mat3} out the receiving matrix
 	 * @param {mat3} a the first operand
 	 * @param {mat3} b the second operand
 	 * @returns {mat3} out
 	 */
-	mat3.multiply = function (out, a, b) {
+	mat3.multiply = function (a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(9);
 	    var a00 = a[0], a01 = a[1], a02 = a[2],
 	        a10 = a[3], a11 = a[4], a12 = a[5],
 	        a20 = a[6], a21 = a[7], a22 = a[8],
@@ -1444,12 +1460,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Translate a mat3 by the given vector
 	 *
-	 * @param {mat3} out the receiving matrix
 	 * @param {mat3} a the matrix to translate
 	 * @param {vec2} v vector to translate by
 	 * @returns {mat3} out
 	 */
-	mat3.translate = function(out, a, v) {
+	mat3.translate = function(a, v) {
+	    var out = new glMatrix.ARRAY_TYPE(9);
 	    var a00 = a[0], a01 = a[1], a02 = a[2],
 	        a10 = a[3], a11 = a[4], a12 = a[5],
 	        a20 = a[6], a21 = a[7], a22 = a[8],
@@ -1472,12 +1488,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Rotates a mat3 by the given angle
 	 *
-	 * @param {mat3} out the receiving matrix
 	 * @param {mat3} a the matrix to rotate
 	 * @param {Number} rad the angle to rotate the matrix by
 	 * @returns {mat3} out
 	 */
-	mat3.rotate = function (out, a, rad) {
+	mat3.rotate = function (a, rad) {
+	    var out = new glMatrix.ARRAY_TYPE(9);
 	    var a00 = a[0], a01 = a[1], a02 = a[2],
 	        a10 = a[3], a11 = a[4], a12 = a[5],
 	        a20 = a[6], a21 = a[7], a22 = a[8],
@@ -1502,12 +1518,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Scales the mat3 by the dimensions in the given vec2
 	 *
-	 * @param {mat3} out the receiving matrix
 	 * @param {mat3} a the matrix to rotate
 	 * @param {vec2} v the vec2 to scale the matrix by
 	 * @returns {mat3} out
 	 **/
-	mat3.scale = function(out, a, v) {
+	mat3.scale = function(a, v) {
+	    var out = new glMatrix.ARRAY_TYPE(9);
 	    var x = v[0], y = v[1];
 
 	    out[0] = x * a[0];
@@ -1531,11 +1547,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *     mat3.identity(dest);
 	 *     mat3.translate(dest, dest, vec);
 	 *
-	 * @param {mat3} out mat3 receiving operation result
 	 * @param {vec2} v Translation vector
 	 * @returns {mat3} out
 	 */
-	mat3.fromTranslation = function(out, v) {
+	mat3.fromTranslation = function(v) {
+	    var out = new glMatrix.ARRAY_TYPE(9);
 	    out[0] = 1;
 	    out[1] = 0;
 	    out[2] = 0;
@@ -1546,7 +1562,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    out[7] = v[1];
 	    out[8] = 1;
 	    return out;
-	}
+	};
 
 	/**
 	 * Creates a matrix from a given angle
@@ -1555,11 +1571,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *     mat3.identity(dest);
 	 *     mat3.rotate(dest, dest, rad);
 	 *
-	 * @param {mat3} out mat3 receiving operation result
 	 * @param {Number} rad the angle to rotate the matrix by
 	 * @returns {mat3} out
 	 */
-	mat3.fromRotation = function(out, rad) {
+	mat3.fromRotation = function(rad) {
+	    var out = new glMatrix.ARRAY_TYPE(9);
 	    var s = Math.sin(rad), c = Math.cos(rad);
 
 	    out[0] = c;
@@ -1574,7 +1590,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    out[7] = 0;
 	    out[8] = 1;
 	    return out;
-	}
+	};
 
 	/**
 	 * Creates a matrix from a vector scaling
@@ -1583,11 +1599,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *     mat3.identity(dest);
 	 *     mat3.scale(dest, dest, vec);
 	 *
-	 * @param {mat3} out mat3 receiving operation result
 	 * @param {vec2} v Scaling vector
 	 * @returns {mat3} out
 	 */
-	mat3.fromScaling = function(out, v) {
+	mat3.fromScaling = function(v) {
+	    var out = new glMatrix.ARRAY_TYPE(9);
 	    out[0] = v[0];
 	    out[1] = 0;
 	    out[2] = 0;
@@ -1600,16 +1616,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    out[7] = 0;
 	    out[8] = 1;
 	    return out;
-	}
+	};
 
 	/**
 	 * Copies the values from a mat2d into a mat3
 	 *
-	 * @param {mat3} out the receiving matrix
 	 * @param {mat2d} a the matrix to copy
 	 * @returns {mat3} out
 	 **/
-	mat3.fromMat2d = function(out, a) {
+	mat3.fromMat2d = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(9);
 	    out[0] = a[0];
 	    out[1] = a[1];
 	    out[2] = 0;
@@ -1627,12 +1643,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	* Calculates a 3x3 matrix from the given quaternion
 	*
-	* @param {mat3} out mat3 receiving operation result
 	* @param {quat} q Quaternion to create matrix from
 	*
 	* @returns {mat3} out
 	*/
-	mat3.fromQuat = function (out, q) {
+	mat3.fromQuat = function (q) {
+	    var out = new glMatrix.ARRAY_TYPE(9);
 	    var x = q[0], y = q[1], z = q[2], w = q[3],
 	        x2 = x + x,
 	        y2 = y + y,
@@ -1666,12 +1682,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	* Calculates a 3x3 normal matrix (transpose inverse) from the 4x4 matrix
 	*
-	* @param {mat3} out mat3 receiving operation result
 	* @param {mat4} a Mat4 to derive the normal matrix from
 	*
 	* @returns {mat3} out
 	*/
-	mat3.normalFromMat4 = function (out, a) {
+	mat3.normalFromMat4 = function (a) {
+	    var out = new glMatrix.ARRAY_TYPE(9);
 	    var a00 = a[0], a01 = a[1], a02 = a[2], a03 = a[3],
 	        a10 = a[4], a11 = a[5], a12 = a[6], a13 = a[7],
 	        a20 = a[8], a21 = a[9], a22 = a[10], a23 = a[11],
@@ -1738,12 +1754,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Adds two mat3's
 	 *
-	 * @param {mat3} out the receiving matrix
 	 * @param {mat3} a the first operand
 	 * @param {mat3} b the second operand
 	 * @returns {mat3} out
 	 */
-	mat3.add = function(out, a, b) {
+	mat3.add = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(9);
 	    out[0] = a[0] + b[0];
 	    out[1] = a[1] + b[1];
 	    out[2] = a[2] + b[2];
@@ -1759,12 +1775,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Subtracts matrix b from matrix a
 	 *
-	 * @param {mat3} out the receiving matrix
 	 * @param {mat3} a the first operand
 	 * @param {mat3} b the second operand
 	 * @returns {mat3} out
 	 */
-	mat3.subtract = function(out, a, b) {
+	mat3.subtract = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(9);
 	    out[0] = a[0] - b[0];
 	    out[1] = a[1] - b[1];
 	    out[2] = a[2] - b[2];
@@ -1786,12 +1802,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Multiply each element of the matrix by a scalar.
 	 *
-	 * @param {mat3} out the receiving matrix
+
 	 * @param {mat3} a the matrix to scale
 	 * @param {Number} b amount to scale the matrix's elements by
 	 * @returns {mat3} out
 	 */
-	mat3.multiplyScalar = function(out, a, b) {
+	mat3.multiplyScalar = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(9);
 	    out[0] = a[0] * b;
 	    out[1] = a[1] * b;
 	    out[2] = a[2] * b;
@@ -1807,13 +1824,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Adds two mat3's after multiplying each element of the second operand by a scalar value.
 	 *
-	 * @param {mat3} out the receiving vector
 	 * @param {mat3} a the first operand
 	 * @param {mat3} b the second operand
 	 * @param {Number} scale the amount to scale b's elements by before adding
 	 * @returns {mat3} out
 	 */
-	mat3.multiplyScalarAndAdd = function(out, a, b, scale) {
+	mat3.multiplyScalarAndAdd = function(a, b, scale) {
+	    var out = new glMatrix.ARRAY_TYPE(9);
 	    out[0] = a[0] + (b[0] * scale);
 	    out[1] = a[1] + (b[1] * scale);
 	    out[2] = a[2] + (b[2] * scale);
@@ -1865,7 +1882,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 5 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
@@ -1955,11 +1972,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Copy the values from one mat4 to another
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {mat4} a the source matrix
 	 * @returns {mat4} out
 	 */
-	mat4.copy = function(out, a) {
+	mat4.copy = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    out[0] = a[0];
 	    out[1] = a[1];
 	    out[2] = a[2];
@@ -2024,7 +2041,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Set the components of a mat4 to the given values
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {Number} m00 Component in column 0, row 0 position (index 0)
 	 * @param {Number} m01 Component in column 0, row 1 position (index 1)
 	 * @param {Number} m02 Component in column 0, row 2 position (index 2)
@@ -2043,7 +2059,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {Number} m33 Component in column 3, row 3 position (index 15)
 	 * @returns {mat4} out
 	 */
-	mat4.set = function(out, m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33) {
+	mat4.set = function(m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    out[0] = m00;
 	    out[1] = m01;
 	    out[2] = m02;
@@ -2067,10 +2084,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Set a mat4 to the identity matrix
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @returns {mat4} out
 	 */
-	mat4.identity = function(out) {
+	mat4.identity = function() {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    out[0] = 1;
 	    out[1] = 0;
 	    out[2] = 0;
@@ -2093,11 +2110,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Transpose the values of a mat4 not using SIMD
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {mat4} a the source matrix
 	 * @returns {mat4} out
 	 */
-	mat4.scalar.transpose = function(out, a) {
+	mat4.scalar.transpose = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    // If we are transposing ourselves we can skip a few steps but have to cache some values
 	    if (out === a) {
 	        var a01 = a[1], a02 = a[2], a03 = a[3],
@@ -2141,11 +2158,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Transpose the values of a mat4 using SIMD
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {mat4} a the source matrix
 	 * @returns {mat4} out
 	 */
-	mat4.SIMD.transpose = function(out, a) {
+	mat4.SIMD.transpose = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    var a0, a1, a2, a3,
 	        tmp01, tmp23,
 	        out0, out1, out2, out3;
@@ -2159,15 +2176,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    tmp23 = SIMD.Float32x4.shuffle(a2, a3, 0, 1, 4, 5);
 	    out0  = SIMD.Float32x4.shuffle(tmp01, tmp23, 0, 2, 4, 6);
 	    out1  = SIMD.Float32x4.shuffle(tmp01, tmp23, 1, 3, 5, 7);
-	    SIMD.Float32x4.store(out, 0,  out0);
-	    SIMD.Float32x4.store(out, 4,  out1);
+	    SIMD.Float32x4.store(0,  out0);
+	    SIMD.Float32x4.store(4,  out1);
 
 	    tmp01 = SIMD.Float32x4.shuffle(a0, a1, 2, 3, 6, 7);
 	    tmp23 = SIMD.Float32x4.shuffle(a2, a3, 2, 3, 6, 7);
 	    out2  = SIMD.Float32x4.shuffle(tmp01, tmp23, 0, 2, 4, 6);
 	    out3  = SIMD.Float32x4.shuffle(tmp01, tmp23, 1, 3, 5, 7);
-	    SIMD.Float32x4.store(out, 8,  out2);
-	    SIMD.Float32x4.store(out, 12, out3);
+	    SIMD.Float32x4.store(8,  out2);
+	    SIMD.Float32x4.store(12, out3);
 
 	    return out;
 	};
@@ -2175,7 +2192,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Transpse a mat4 using SIMD if available and enabled
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {mat4} a the source matrix
 	 * @returns {mat4} out
 	 */
@@ -2184,11 +2200,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Inverts a mat4 not using SIMD
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {mat4} a the source matrix
 	 * @returns {mat4} out
 	 */
-	mat4.scalar.invert = function(out, a) {
+	mat4.scalar.invert = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    var a00 = a[0], a01 = a[1], a02 = a[2], a03 = a[3],
 	        a10 = a[4], a11 = a[5], a12 = a[6], a13 = a[7],
 	        a20 = a[8], a21 = a[9], a22 = a[10], a23 = a[11],
@@ -2238,11 +2254,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Inverts a mat4 using SIMD
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {mat4} a the source matrix
 	 * @returns {mat4} out
 	 */
-	mat4.SIMD.invert = function(out, a) {
+	mat4.SIMD.invert = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	  var row0, row1, row2, row3,
 	      tmp1,
 	      minor0, minor1, minor2, minor3,
@@ -2328,17 +2344,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 
 	  // Compute matrix inverse
-	  SIMD.Float32x4.store(out, 0,  SIMD.Float32x4.mul(det, minor0));
-	  SIMD.Float32x4.store(out, 4,  SIMD.Float32x4.mul(det, minor1));
-	  SIMD.Float32x4.store(out, 8,  SIMD.Float32x4.mul(det, minor2));
-	  SIMD.Float32x4.store(out, 12, SIMD.Float32x4.mul(det, minor3));
+	  SIMD.Float32x4.store(0,  SIMD.Float32x4.mul(det, minor0));
+	  SIMD.Float32x4.store(4,  SIMD.Float32x4.mul(det, minor1));
+	  SIMD.Float32x4.store(8,  SIMD.Float32x4.mul(det, minor2));
+	  SIMD.Float32x4.store(12, SIMD.Float32x4.mul(det, minor3));
 	  return out;
-	}
+	};
 
 	/**
 	 * Inverts a mat4 using SIMD if available and enabled
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {mat4} a the source matrix
 	 * @returns {mat4} out
 	 */
@@ -2347,11 +2362,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Calculates the adjugate of a mat4 not using SIMD
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {mat4} a the source matrix
 	 * @returns {mat4} out
 	 */
-	mat4.scalar.adjoint = function(out, a) {
+	mat4.scalar.adjoint = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    var a00 = a[0], a01 = a[1], a02 = a[2], a03 = a[3],
 	        a10 = a[4], a11 = a[5], a12 = a[6], a13 = a[7],
 	        a20 = a[8], a21 = a[9], a22 = a[10], a23 = a[11],
@@ -2379,11 +2394,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Calculates the adjugate of a mat4 using SIMD
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {mat4} a the source matrix
 	 * @returns {mat4} out
 	 */
-	mat4.SIMD.adjoint = function(out, a) {
+	mat4.SIMD.adjoint = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	  var a0, a1, a2, a3;
 	  var row0, row1, row2, row3;
 	  var tmp1;
@@ -2457,17 +2472,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	  minor1 = SIMD.Float32x4.sub(minor1, SIMD.Float32x4.mul(row3, tmp1));
 	  minor3 = SIMD.Float32x4.add(SIMD.Float32x4.mul(row1, tmp1), minor3);
 
-	  SIMD.Float32x4.store(out, 0,  minor0);
-	  SIMD.Float32x4.store(out, 4,  minor1);
-	  SIMD.Float32x4.store(out, 8,  minor2);
-	  SIMD.Float32x4.store(out, 12, minor3);
+	  SIMD.Float32x4.store(0,  minor0);
+	  SIMD.Float32x4.store(4,  minor1);
+	  SIMD.Float32x4.store(8,  minor2);
+	  SIMD.Float32x4.store(12, minor3);
 	  return out;
 	};
 
 	/**
 	 * Calculates the adjugate of a mat4 using SIMD if available and enabled
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {mat4} a the source matrix
 	 * @returns {mat4} out
 	 */
@@ -2505,12 +2519,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Multiplies two mat4's explicitly using SIMD
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {mat4} a the first operand, must be a Float32Array
 	 * @param {mat4} b the second operand, must be a Float32Array
 	 * @returns {mat4} out
 	 */
-	mat4.SIMD.multiply = function (out, a, b) {
+	mat4.SIMD.multiply = function (a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    var a0 = SIMD.Float32x4.load(a, 0);
 	    var a1 = SIMD.Float32x4.load(a, 4);
 	    var a2 = SIMD.Float32x4.load(a, 8);
@@ -2524,7 +2538,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                       SIMD.Float32x4.add(
 	                           SIMD.Float32x4.mul(SIMD.Float32x4.swizzle(b0, 2, 2, 2, 2), a2),
 	                           SIMD.Float32x4.mul(SIMD.Float32x4.swizzle(b0, 3, 3, 3, 3), a3))));
-	    SIMD.Float32x4.store(out, 0, out0);
+	    SIMD.Float32x4.store(0, out0);
 
 	    var b1 = SIMD.Float32x4.load(b, 4);
 	    var out1 = SIMD.Float32x4.add(
@@ -2534,7 +2548,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                       SIMD.Float32x4.add(
 	                           SIMD.Float32x4.mul(SIMD.Float32x4.swizzle(b1, 2, 2, 2, 2), a2),
 	                           SIMD.Float32x4.mul(SIMD.Float32x4.swizzle(b1, 3, 3, 3, 3), a3))));
-	    SIMD.Float32x4.store(out, 4, out1);
+	    SIMD.Float32x4.store(4, out1);
 
 	    var b2 = SIMD.Float32x4.load(b, 8);
 	    var out2 = SIMD.Float32x4.add(
@@ -2544,7 +2558,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                       SIMD.Float32x4.add(
 	                               SIMD.Float32x4.mul(SIMD.Float32x4.swizzle(b2, 2, 2, 2, 2), a2),
 	                               SIMD.Float32x4.mul(SIMD.Float32x4.swizzle(b2, 3, 3, 3, 3), a3))));
-	    SIMD.Float32x4.store(out, 8, out2);
+	    SIMD.Float32x4.store(8, out2);
 
 	    var b3 = SIMD.Float32x4.load(b, 12);
 	    var out3 = SIMD.Float32x4.add(
@@ -2554,7 +2568,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                        SIMD.Float32x4.add(
 	                            SIMD.Float32x4.mul(SIMD.Float32x4.swizzle(b3, 2, 2, 2, 2), a2),
 	                            SIMD.Float32x4.mul(SIMD.Float32x4.swizzle(b3, 3, 3, 3, 3), a3))));
-	    SIMD.Float32x4.store(out, 12, out3);
+	    SIMD.Float32x4.store(12, out3);
 
 	    return out;
 	};
@@ -2562,12 +2576,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Multiplies two mat4's explicitly not using SIMD
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {mat4} a the first operand
 	 * @param {mat4} b the second operand
 	 * @returns {mat4} out
 	 */
-	mat4.scalar.multiply = function (out, a, b) {
+	mat4.scalar.multiply = function (a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    var a00 = a[0], a01 = a[1], a02 = a[2], a03 = a[3],
 	        a10 = a[4], a11 = a[5], a12 = a[6], a13 = a[7],
 	        a20 = a[8], a21 = a[9], a22 = a[10], a23 = a[11],
@@ -2603,7 +2617,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Multiplies two mat4's using SIMD if available and enabled
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {mat4} a the first operand
 	 * @param {mat4} b the second operand
 	 * @returns {mat4} out
@@ -2619,12 +2632,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Translate a mat4 by the given vector not using SIMD
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {mat4} a the matrix to translate
 	 * @param {vec3} v vector to translate by
 	 * @returns {mat4} out
 	 */
-	mat4.scalar.translate = function (out, a, v) {
+	mat4.scalar.translate = function (a, v) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    var x = v[0], y = v[1], z = v[2],
 	        a00, a01, a02, a03,
 	        a10, a11, a12, a13,
@@ -2656,12 +2669,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Translates a mat4 by the given vector using SIMD
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {mat4} a the matrix to translate
 	 * @param {vec3} v vector to translate by
 	 * @returns {mat4} out
 	 */
-	mat4.SIMD.translate = function (out, a, v) {
+	mat4.SIMD.translate = function (a, v) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    var a0 = SIMD.Float32x4.load(a, 0),
 	        a1 = SIMD.Float32x4.load(a, 4),
 	        a2 = SIMD.Float32x4.load(a, 8),
@@ -2679,7 +2692,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    a2 = SIMD.Float32x4.mul(a2, SIMD.Float32x4.swizzle(vec, 2, 2, 2, 2));
 
 	    var t0 = SIMD.Float32x4.add(a0, SIMD.Float32x4.add(a1, SIMD.Float32x4.add(a2, a3)));
-	    SIMD.Float32x4.store(out, 12, t0);
+	    SIMD.Float32x4.store(12, t0);
 
 	    return out;
 	};
@@ -2687,7 +2700,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Translates a mat4 by the given vector using SIMD if available and enabled
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {mat4} a the matrix to translate
 	 * @param {vec3} v vector to translate by
 	 * @returns {mat4} out
@@ -2697,12 +2709,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Scales the mat4 by the dimensions in the given vec3 not using vectorization
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {mat4} a the matrix to scale
 	 * @param {vec3} v the vec3 to scale the matrix by
 	 * @returns {mat4} out
 	 **/
-	mat4.scalar.scale = function(out, a, v) {
+	mat4.scalar.scale = function(a, v) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    var x = v[0], y = v[1], z = v[2];
 
 	    out[0] = a[0] * x;
@@ -2727,26 +2739,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Scales the mat4 by the dimensions in the given vec3 using vectorization
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {mat4} a the matrix to scale
 	 * @param {vec3} v the vec3 to scale the matrix by
 	 * @returns {mat4} out
 	 **/
-	mat4.SIMD.scale = function(out, a, v) {
+	mat4.SIMD.scale = function(a, v) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    var a0, a1, a2;
 	    var vec = SIMD.Float32x4(v[0], v[1], v[2], 0);
 
 	    a0 = SIMD.Float32x4.load(a, 0);
 	    SIMD.Float32x4.store(
-	        out, 0, SIMD.Float32x4.mul(a0, SIMD.Float32x4.swizzle(vec, 0, 0, 0, 0)));
+	        0, SIMD.Float32x4.mul(a0, SIMD.Float32x4.swizzle(vec, 0, 0, 0, 0)));
 
 	    a1 = SIMD.Float32x4.load(a, 4);
 	    SIMD.Float32x4.store(
-	        out, 4, SIMD.Float32x4.mul(a1, SIMD.Float32x4.swizzle(vec, 1, 1, 1, 1)));
+	        4, SIMD.Float32x4.mul(a1, SIMD.Float32x4.swizzle(vec, 1, 1, 1, 1)));
 
 	    a2 = SIMD.Float32x4.load(a, 8);
 	    SIMD.Float32x4.store(
-	        out, 8, SIMD.Float32x4.mul(a2, SIMD.Float32x4.swizzle(vec, 2, 2, 2, 2)));
+	        8, SIMD.Float32x4.mul(a2, SIMD.Float32x4.swizzle(vec, 2, 2, 2, 2)));
 
 	    out[12] = a[12];
 	    out[13] = a[13];
@@ -2758,7 +2770,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Scales the mat4 by the dimensions in the given vec3 using SIMD if available and enabled
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {mat4} a the matrix to scale
 	 * @param {vec3} v the vec3 to scale the matrix by
 	 * @returns {mat4} out
@@ -2768,13 +2779,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Rotates a mat4 by the given angle around the given axis
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {mat4} a the matrix to rotate
 	 * @param {Number} rad the angle to rotate the matrix by
 	 * @param {vec3} axis the axis to rotate around
 	 * @returns {mat4} out
 	 */
-	mat4.rotate = function (out, a, rad, axis) {
+	mat4.rotate = function (a, rad, axis) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    var x = axis[0], y = axis[1], z = axis[2],
 	        len = Math.sqrt(x * x + y * y + z * z),
 	        s, c, t,
@@ -2831,12 +2842,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Rotates a matrix by the given angle around the X axis not using SIMD
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {mat4} a the matrix to rotate
 	 * @param {Number} rad the angle to rotate the matrix by
 	 * @returns {mat4} out
 	 */
-	mat4.scalar.rotateX = function (out, a, rad) {
+	mat4.scalar.rotateX = function (a, rad) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    var s = Math.sin(rad),
 	        c = Math.cos(rad),
 	        a10 = a[4],
@@ -2874,12 +2885,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Rotates a matrix by the given angle around the X axis using SIMD
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {mat4} a the matrix to rotate
 	 * @param {Number} rad the angle to rotate the matrix by
 	 * @returns {mat4} out
 	 */
-	mat4.SIMD.rotateX = function (out, a, rad) {
+	mat4.SIMD.rotateX = function (a, rad) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    var s = SIMD.Float32x4.splat(Math.sin(rad)),
 	        c = SIMD.Float32x4.splat(Math.cos(rad));
 
@@ -2897,9 +2908,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // Perform axis-specific matrix multiplication
 	    var a_1 = SIMD.Float32x4.load(a, 4);
 	    var a_2 = SIMD.Float32x4.load(a, 8);
-	    SIMD.Float32x4.store(out, 4,
+	    SIMD.Float32x4.store(4,
 	                         SIMD.Float32x4.add(SIMD.Float32x4.mul(a_1, c), SIMD.Float32x4.mul(a_2, s)));
-	    SIMD.Float32x4.store(out, 8,
+	    SIMD.Float32x4.store(8,
 	                         SIMD.Float32x4.sub(SIMD.Float32x4.mul(a_2, c), SIMD.Float32x4.mul(a_1, s)));
 	    return out;
 	};
@@ -2907,7 +2918,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Rotates a matrix by the given angle around the X axis using SIMD if availabe and enabled
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {mat4} a the matrix to rotate
 	 * @param {Number} rad the angle to rotate the matrix by
 	 * @returns {mat4} out
@@ -2917,12 +2927,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Rotates a matrix by the given angle around the Y axis not using SIMD
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {mat4} a the matrix to rotate
 	 * @param {Number} rad the angle to rotate the matrix by
 	 * @returns {mat4} out
 	 */
-	mat4.scalar.rotateY = function (out, a, rad) {
+	mat4.scalar.rotateY = function (a, rad) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    var s = Math.sin(rad),
 	        c = Math.cos(rad),
 	        a00 = a[0],
@@ -2960,12 +2970,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Rotates a matrix by the given angle around the Y axis using SIMD
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {mat4} a the matrix to rotate
 	 * @param {Number} rad the angle to rotate the matrix by
 	 * @returns {mat4} out
 	 */
-	mat4.SIMD.rotateY = function (out, a, rad) {
+	mat4.SIMD.rotateY = function (a, rad) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    var s = SIMD.Float32x4.splat(Math.sin(rad)),
 	        c = SIMD.Float32x4.splat(Math.cos(rad));
 
@@ -2983,9 +2993,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // Perform axis-specific matrix multiplication
 	    var a_0 = SIMD.Float32x4.load(a, 0);
 	    var a_2 = SIMD.Float32x4.load(a, 8);
-	    SIMD.Float32x4.store(out, 0,
+	    SIMD.Float32x4.store(0,
 	                         SIMD.Float32x4.sub(SIMD.Float32x4.mul(a_0, c), SIMD.Float32x4.mul(a_2, s)));
-	    SIMD.Float32x4.store(out, 8,
+	    SIMD.Float32x4.store(8,
 	                         SIMD.Float32x4.add(SIMD.Float32x4.mul(a_0, s), SIMD.Float32x4.mul(a_2, c)));
 	    return out;
 	};
@@ -2993,7 +3003,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Rotates a matrix by the given angle around the Y axis if SIMD available and enabled
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {mat4} a the matrix to rotate
 	 * @param {Number} rad the angle to rotate the matrix by
 	 * @returns {mat4} out
@@ -3003,12 +3012,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Rotates a matrix by the given angle around the Z axis not using SIMD
 	 *
-	 * @param {mat4} out the receiving matrix
 	 * @param {mat4} a the matrix to rotate
 	 * @param {Number} rad the angle to rotate the matrix by
 	 * @returns {mat4} out
 	 */
-	mat4.scalar.rotateZ = function (out, a, rad) {
+	mat4.scalar.rotateZ = function (a, rad) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    var s = Math.sin(rad),
 	        c = Math.cos(rad),
 	        a00 = a[0],
@@ -3046,12 +3055,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Rotates a matrix by the given angle around the Z axis using SIMD
 	 *
-	 * @param {mat4} out the receiving matrix
+
 	 * @param {mat4} a the matrix to rotate
 	 * @param {Number} rad the angle to rotate the matrix by
 	 * @returns {mat4} out
 	 */
-	mat4.SIMD.rotateZ = function (out, a, rad) {
+	mat4.SIMD.rotateZ = function (a, rad) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    var s = SIMD.Float32x4.splat(Math.sin(rad)),
 	        c = SIMD.Float32x4.splat(Math.cos(rad));
 
@@ -3069,9 +3079,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // Perform axis-specific matrix multiplication
 	    var a_0 = SIMD.Float32x4.load(a, 0);
 	    var a_1 = SIMD.Float32x4.load(a, 4);
-	    SIMD.Float32x4.store(out, 0,
+	    SIMD.Float32x4.store(0,
 	                         SIMD.Float32x4.add(SIMD.Float32x4.mul(a_0, c), SIMD.Float32x4.mul(a_1, s)));
-	    SIMD.Float32x4.store(out, 4,
+	    SIMD.Float32x4.store(4,
 	                         SIMD.Float32x4.sub(SIMD.Float32x4.mul(a_1, c), SIMD.Float32x4.mul(a_0, s)));
 	    return out;
 	};
@@ -3079,7 +3089,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Rotates a matrix by the given angle around the Z axis if SIMD available and enabled
 	 *
-	 * @param {mat4} out the receiving matrix
+
 	 * @param {mat4} a the matrix to rotate
 	 * @param {Number} rad the angle to rotate the matrix by
 	 * @returns {mat4} out
@@ -3093,11 +3103,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *     mat4.identity(dest);
 	 *     mat4.translate(dest, dest, vec);
 	 *
-	 * @param {mat4} out mat4 receiving operation result
 	 * @param {vec3} v Translation vector
 	 * @returns {mat4} out
 	 */
-	mat4.fromTranslation = function(out, v) {
+	mat4.fromTranslation = function(v) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    out[0] = 1;
 	    out[1] = 0;
 	    out[2] = 0;
@@ -3115,7 +3125,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    out[14] = v[2];
 	    out[15] = 1;
 	    return out;
-	}
+	};;
 
 	/**
 	 * Creates a matrix from a vector scaling
@@ -3124,11 +3134,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *     mat4.identity(dest);
 	 *     mat4.scale(dest, dest, vec);
 	 *
-	 * @param {mat4} out mat4 receiving operation result
+
 	 * @param {vec3} v Scaling vector
 	 * @returns {mat4} out
 	 */
-	mat4.fromScaling = function(out, v) {
+	mat4.fromScaling = function(v) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    out[0] = v[0];
 	    out[1] = 0;
 	    out[2] = 0;
@@ -3146,7 +3157,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    out[14] = 0;
 	    out[15] = 1;
 	    return out;
-	}
+	};
 
 	/**
 	 * Creates a matrix from a given angle around a given axis
@@ -3155,12 +3166,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *     mat4.identity(dest);
 	 *     mat4.rotate(dest, dest, rad, axis);
 	 *
-	 * @param {mat4} out mat4 receiving operation result
 	 * @param {Number} rad the angle to rotate the matrix by
 	 * @param {vec3} axis the axis to rotate around
 	 * @returns {mat4} out
 	 */
-	mat4.fromRotation = function(out, rad, axis) {
+	mat4.fromRotation = function(rad, axis) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    var x = axis[0], y = axis[1], z = axis[2],
 	        len = Math.sqrt(x * x + y * y + z * z),
 	        s, c, t;
@@ -3194,7 +3205,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    out[14] = 0;
 	    out[15] = 1;
 	    return out;
-	}
+	};
 
 	/**
 	 * Creates a matrix from the given angle around the X axis
@@ -3203,11 +3214,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *     mat4.identity(dest);
 	 *     mat4.rotateX(dest, dest, rad);
 	 *
-	 * @param {mat4} out mat4 receiving operation result
 	 * @param {Number} rad the angle to rotate the matrix by
 	 * @returns {mat4} out
 	 */
-	mat4.fromXRotation = function(out, rad) {
+	mat4.fromXRotation = function(rad) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    var s = Math.sin(rad),
 	        c = Math.cos(rad);
 
@@ -3229,7 +3240,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    out[14] = 0;
 	    out[15] = 1;
 	    return out;
-	}
+	};
 
 	/**
 	 * Creates a matrix from the given angle around the Y axis
@@ -3238,11 +3249,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *     mat4.identity(dest);
 	 *     mat4.rotateY(dest, dest, rad);
 	 *
-	 * @param {mat4} out mat4 receiving operation result
 	 * @param {Number} rad the angle to rotate the matrix by
 	 * @returns {mat4} out
 	 */
-	mat4.fromYRotation = function(out, rad) {
+	mat4.fromYRotation = function(rad) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    var s = Math.sin(rad),
 	        c = Math.cos(rad);
 
@@ -3264,7 +3275,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    out[14] = 0;
 	    out[15] = 1;
 	    return out;
-	}
+	};
 
 	/**
 	 * Creates a matrix from the given angle around the Z axis
@@ -3273,11 +3284,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *     mat4.identity(dest);
 	 *     mat4.rotateZ(dest, dest, rad);
 	 *
-	 * @param {mat4} out mat4 receiving operation result
 	 * @param {Number} rad the angle to rotate the matrix by
 	 * @returns {mat4} out
 	 */
-	mat4.fromZRotation = function(out, rad) {
+	mat4.fromZRotation = function(rad) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    var s = Math.sin(rad),
 	        c = Math.cos(rad);
 
@@ -3299,7 +3310,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    out[14] = 0;
 	    out[15] = 1;
 	    return out;
-	}
+	};
 
 	/**
 	 * Creates a matrix from a quaternion rotation and vector translation
@@ -3311,12 +3322,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *     quat4.toMat4(quat, quatMat);
 	 *     mat4.multiply(dest, quatMat);
 	 *
-	 * @param {mat4} out mat4 receiving operation result
-	 * @param {quat4} q Rotation quaternion
+	 * @param {quat} q Rotation quaternion
 	 * @param {vec3} v Translation vector
 	 * @returns {mat4} out
 	 */
-	mat4.fromRotationTranslation = function (out, q, v) {
+	mat4.fromRotationTranslation = function (q, v) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    // Quaternion math
 	    var x = q[0], y = q[1], z = q[2], w = q[3],
 	        x2 = x + x,
@@ -3362,7 +3373,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param  {mat4} mat Matrix to be decomposed (input)
 	 * @return {vec3} out
 	 */
-	mat4.getTranslation = function (out, mat) {
+	mat4.getTranslation = function (mat) {
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	  out[0] = mat[12];
 	  out[1] = mat[13];
 	  out[2] = mat[14];
@@ -3376,11 +3388,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *  with a normalized Quaternion paramter, the returned vector will be 
 	 *  the same as the scaling vector
 	 *  originally supplied.
-	 * @param  {vec3} out Vector to receive scaling factor component
 	 * @param  {mat4} mat Matrix to be decomposed (input)
 	 * @return {vec3} out
 	 */
-	mat4.getScaling = function (out, mat) {
+	mat4.getScaling = function (mat) {
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	  var m11 = mat[0],
 	      m12 = mat[1],
 	      m13 = mat[2],
@@ -3407,7 +3419,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {mat4} mat Matrix to be decomposed (input)
 	 * @return {quat} out
 	 */
-	mat4.getRotation = function (out, mat) {
+	mat4.getRotation = function (mat) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	  // Algorithm taken from http://www.euclideanspace.com/maths/geometry/rotations/conversions/matrixToQuaternion/index.htm
 	  var trace = mat[0] + mat[5] + mat[10];
 	  var S = 0;
@@ -3452,13 +3465,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *     mat4.multiply(dest, quatMat);
 	 *     mat4.scale(dest, scale)
 	 *
-	 * @param {mat4} out mat4 receiving operation result
-	 * @param {quat4} q Rotation quaternion
+
+	 * @param {quat} q Rotation quaternion
 	 * @param {vec3} v Translation vector
 	 * @param {vec3} s Scaling vector
 	 * @returns {mat4} out
 	 */
-	mat4.fromRotationTranslationScale = function (out, q, v, s) {
+	mat4.fromRotationTranslationScale = function (q, v, s) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    // Quaternion math
 	    var x = q[0], y = q[1], z = q[2], w = q[3],
 	        x2 = x + x,
@@ -3511,14 +3525,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *     mat4.scale(dest, scale)
 	 *     mat4.translate(dest, negativeOrigin);
 	 *
-	 * @param {mat4} out mat4 receiving operation result
-	 * @param {quat4} q Rotation quaternion
+
+	 * @param {quat} q Rotation quaternion
 	 * @param {vec3} v Translation vector
 	 * @param {vec3} s Scaling vector
 	 * @param {vec3} o The origin vector around which to scale and rotate
 	 * @returns {mat4} out
 	 */
-	mat4.fromRotationTranslationScaleOrigin = function (out, q, v, s, o) {
+	mat4.fromRotationTranslationScaleOrigin = function (q, v, s, o) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	  // Quaternion math
 	  var x = q[0], y = q[1], z = q[2], w = q[3],
 	      x2 = x + x,
@@ -3566,12 +3581,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Calculates a 4x4 matrix from the given quaternion
 	 *
-	 * @param {mat4} out mat4 receiving operation result
+
 	 * @param {quat} q Quaternion to create matrix from
 	 *
 	 * @returns {mat4} out
 	 */
-	mat4.fromQuat = function (out, q) {
+	mat4.fromQuat = function (q) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    var x = q[0], y = q[1], z = q[2], w = q[3],
 	        x2 = x + x,
 	        y2 = y + y,
@@ -3613,7 +3629,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Generates a frustum matrix with the given bounds
 	 *
-	 * @param {mat4} out mat4 frustum matrix will be written into
 	 * @param {Number} left Left bound of the frustum
 	 * @param {Number} right Right bound of the frustum
 	 * @param {Number} bottom Bottom bound of the frustum
@@ -3622,7 +3637,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {Number} far Far bound of the frustum
 	 * @returns {mat4} out
 	 */
-	mat4.frustum = function (out, left, right, bottom, top, near, far) {
+	mat4.frustum = function (left, right, bottom, top, near, far) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    var rl = 1 / (right - left),
 	        tb = 1 / (top - bottom),
 	        nf = 1 / (near - far);
@@ -3648,14 +3664,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Generates a perspective projection matrix with the given bounds
 	 *
-	 * @param {mat4} out mat4 frustum matrix will be written into
 	 * @param {number} fovy Vertical field of view in radians
 	 * @param {number} aspect Aspect ratio. typically viewport width/height
 	 * @param {number} near Near bound of the frustum
 	 * @param {number} far Far bound of the frustum
 	 * @returns {mat4} out
 	 */
-	mat4.perspective = function (out, fovy, aspect, near, far) {
+	mat4.perspective = function (fovy, aspect, near, far) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    var f = 1.0 / Math.tan(fovy / 2),
 	        nf = 1 / (near - far);
 	    out[0] = f / aspect;
@@ -3682,13 +3698,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * This is primarily useful for generating projection matrices to be used
 	 * with the still experiemental WebVR API.
 	 *
-	 * @param {mat4} out mat4 frustum matrix will be written into
 	 * @param {Object} fov Object containing the following values: upDegrees, downDegrees, leftDegrees, rightDegrees
 	 * @param {number} near Near bound of the frustum
 	 * @param {number} far Far bound of the frustum
 	 * @returns {mat4} out
 	 */
-	mat4.perspectiveFromFieldOfView = function (out, fov, near, far) {
+	mat4.perspectiveFromFieldOfView = function (fov, near, far) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    var upTan = Math.tan(fov.upDegrees * Math.PI/180.0),
 	        downTan = Math.tan(fov.downDegrees * Math.PI/180.0),
 	        leftTan = Math.tan(fov.leftDegrees * Math.PI/180.0),
@@ -3713,12 +3729,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    out[14] = (far * near) / (near - far);
 	    out[15] = 0.0;
 	    return out;
-	}
+	};
 
 	/**
 	 * Generates a orthogonal projection matrix with the given bounds
 	 *
-	 * @param {mat4} out mat4 frustum matrix will be written into
 	 * @param {number} left Left bound of the frustum
 	 * @param {number} right Right bound of the frustum
 	 * @param {number} bottom Bottom bound of the frustum
@@ -3727,7 +3742,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {number} far Far bound of the frustum
 	 * @returns {mat4} out
 	 */
-	mat4.ortho = function (out, left, right, bottom, top, near, far) {
+	mat4.ortho = function (left, right, bottom, top, near, far) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    var lr = 1 / (left - right),
 	        bt = 1 / (bottom - top),
 	        nf = 1 / (near - far);
@@ -3753,13 +3769,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Generates a look-at matrix with the given eye position, focal point, and up axis
 	 *
-	 * @param {mat4} out mat4 frustum matrix will be written into
 	 * @param {vec3} eye Position of the viewer
 	 * @param {vec3} center Point the viewer is looking at
 	 * @param {vec3} up vec3 pointing up
 	 * @returns {mat4} out
 	 */
-	mat4.lookAt = function (out, eye, center, up) {
+	mat4.lookAt = function (eye, center, up) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    var x0, x1, x2, y0, y1, y2, z0, z1, z2, len,
 	        eyex = eye[0],
 	        eyey = eye[1],
@@ -3863,12 +3879,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Adds two mat4's
 	 *
-	 * @param {mat4} out the receiving matrix
+
 	 * @param {mat4} a the first operand
 	 * @param {mat4} b the second operand
 	 * @returns {mat4} out
 	 */
-	mat4.add = function(out, a, b) {
+	mat4.add = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    out[0] = a[0] + b[0];
 	    out[1] = a[1] + b[1];
 	    out[2] = a[2] + b[2];
@@ -3891,12 +3908,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Subtracts matrix b from matrix a
 	 *
-	 * @param {mat4} out the receiving matrix
+
 	 * @param {mat4} a the first operand
 	 * @param {mat4} b the second operand
 	 * @returns {mat4} out
 	 */
-	mat4.subtract = function(out, a, b) {
+	mat4.subtract = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    out[0] = a[0] - b[0];
 	    out[1] = a[1] - b[1];
 	    out[2] = a[2] - b[2];
@@ -3925,12 +3943,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Multiply each element of the matrix by a scalar.
 	 *
-	 * @param {mat4} out the receiving matrix
+
 	 * @param {mat4} a the matrix to scale
 	 * @param {Number} b amount to scale the matrix's elements by
 	 * @returns {mat4} out
 	 */
-	mat4.multiplyScalar = function(out, a, b) {
+	mat4.multiplyScalar = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    out[0] = a[0] * b;
 	    out[1] = a[1] * b;
 	    out[2] = a[2] * b;
@@ -3953,13 +3972,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Adds two mat4's after multiplying each element of the second operand by a scalar value.
 	 *
-	 * @param {mat4} out the receiving vector
 	 * @param {mat4} a the first operand
 	 * @param {mat4} b the second operand
 	 * @param {Number} scale the amount to scale b's elements by before adding
 	 * @returns {mat4} out
 	 */
-	mat4.multiplyScalarAndAdd = function(out, a, b, scale) {
+	mat4.multiplyScalarAndAdd = function(a, b, scale) {
+	    var out = new glMatrix.ARRAY_TYPE(16);
 	    out[0] = a[0] + (b[0] * scale);
 	    out[1] = a[1] + (b[1] * scale);
 	    out[2] = a[2] + (b[2] * scale);
@@ -4035,7 +4054,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 6 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
@@ -4059,9 +4078,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	THE SOFTWARE. */
 
 	var glMatrix = __webpack_require__(1);
-	var mat3 = __webpack_require__(4);
-	var vec3 = __webpack_require__(7);
-	var vec4 = __webpack_require__(8);
+	var mat3 = __webpack_require__(12);
+	var vec3 = __webpack_require__(15);
+	var vec4 = __webpack_require__(16);
 
 	/**
 	 * @class Quaternion
@@ -4089,25 +4108,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *
 	 * Both vectors are assumed to be unit length.
 	 *
-	 * @param {quat} out the receiving quaternion.
 	 * @param {vec3} a the initial vector
 	 * @param {vec3} b the destination vector
 	 * @returns {quat} out
 	 */
 	quat.rotationTo = (function() {
-	    var tmpvec3 = vec3.create();
+	    //var tmpvec3 = vec3.create();
 	    var xUnitVec3 = vec3.fromValues(1,0,0);
 	    var yUnitVec3 = vec3.fromValues(0,1,0);
-
-	    return function(out, a, b) {
+	    var tmpvec3;
+	    
+	    return function(a, b) {
+	        var out = new glMatrix.ARRAY_TYPE(4);
 	        var dot = vec3.dot(a, b);
 	        if (dot < -0.999999) {
-	            vec3.cross(tmpvec3, xUnitVec3, a);
+	            tmpvec3 = vec3.cross(xUnitVec3, a);
 	            if (vec3.length(tmpvec3) < 0.000001)
-	                vec3.cross(tmpvec3, yUnitVec3, a);
-	            vec3.normalize(tmpvec3, tmpvec3);
-	            quat.setAxisAngle(out, tmpvec3, Math.PI);
-	            return out;
+	                tmpvec3 = vec3.cross(yUnitVec3, a);
+	            tmpvec3 = vec3.normalize(tmpvec3);
+	            return quat.setAxisAngle(tmpvec3, Math.PI);
 	        } else if (dot > 0.999999) {
 	            out[0] = 0;
 	            out[1] = 0;
@@ -4115,12 +4134,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	            out[3] = 1;
 	            return out;
 	        } else {
-	            vec3.cross(tmpvec3, a, b);
+	            tmpvec3 = vec3.cross(a, b);
 	            out[0] = tmpvec3[0];
 	            out[1] = tmpvec3[1];
 	            out[2] = tmpvec3[2];
 	            out[3] = 1 + dot;
-	            return quat.normalize(out, out);
+	            return quat.normalize(out);
 	        }
 	    };
 	})();
@@ -4138,7 +4157,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	quat.setAxes = (function() {
 	    var matr = mat3.create();
 
-	    return function(out, view, right, up) {
+	    return function(view, right, up) {
 	        matr[0] = right[0];
 	        matr[3] = right[1];
 	        matr[6] = right[2];
@@ -4151,7 +4170,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        matr[5] = -view[1];
 	        matr[8] = -view[2];
 
-	        return quat.normalize(out, quat.fromMat3(out, matr));
+	        return quat.normalize(quat.fromMat3(matr));
 	    };
 	})();
 
@@ -4179,7 +4198,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Copy the values from one quat to another
 	 *
-	 * @param {quat} out the receiving quaternion
 	 * @param {quat} a the source quaternion
 	 * @returns {quat} out
 	 * @function
@@ -4189,7 +4207,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Set the components of a quat to the given values
 	 *
-	 * @param {quat} out the receiving quaternion
 	 * @param {Number} x X component
 	 * @param {Number} y Y component
 	 * @param {Number} z Z component
@@ -4202,10 +4219,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Set a quat to the identity quaternion
 	 *
-	 * @param {quat} out the receiving quaternion
 	 * @returns {quat} out
 	 */
-	quat.identity = function(out) {
+	quat.identity = function() {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    out[0] = 0;
 	    out[1] = 0;
 	    out[2] = 0;
@@ -4217,12 +4234,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Sets a quat from the given angle and rotation axis,
 	 * then returns it.
 	 *
-	 * @param {quat} out the receiving quaternion
 	 * @param {vec3} axis the axis around which to rotate
 	 * @param {Number} rad the angle in radians
 	 * @returns {quat} out
 	 **/
-	quat.setAxisAngle = function(out, axis, rad) {
+	quat.setAxisAngle = function(axis, rad) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    rad = rad * 0.5;
 	    var s = Math.sin(rad);
 	    out[0] = s * axis[0];
@@ -4236,16 +4253,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Gets the rotation axis and angle for a given
 	 *  quaternion. If a quaternion is created with
 	 *  setAxisAngle, this method will return the same
-	 *  values as providied in the original parameter list
+	 *  values as provided in the original parameter list
 	 *  OR functionally equivalent values.
 	 * Example: The quaternion formed by axis [0, 0, 1] and
 	 *  angle -90 is the same as the quaternion formed by
 	 *  [0, 0, 1] and 270. This method favors the latter.
-	 * @param  {vec3} out_axis  Vector receiving the axis of rotation
 	 * @param  {quat} q     Quaternion to be decomposed
 	 * @return {Number}     Angle, in radians, of the rotation
 	 */
-	quat.getAxisAngle = function(out_axis, q) {
+	quat.getAxisAngle = function(q) {
+	    var out_axis = new glMatrix.ARRAY_TYPE(3);
 	    var rad = Math.acos(q[3]) * 2.0;
 	    var s = Math.sin(rad / 2.0);
 	    if (s != 0.0) {
@@ -4258,13 +4275,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        out_axis[1] = 0;
 	        out_axis[2] = 0;
 	    }
-	    return rad;
+	    return [out_axis, rad];
 	};
 
 	/**
 	 * Adds two quat's
 	 *
-	 * @param {quat} out the receiving quaternion
 	 * @param {quat} a the first operand
 	 * @param {quat} b the second operand
 	 * @returns {quat} out
@@ -4275,12 +4291,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Multiplies two quat's
 	 *
-	 * @param {quat} out the receiving quaternion
 	 * @param {quat} a the first operand
 	 * @param {quat} b the second operand
 	 * @returns {quat} out
 	 */
-	quat.multiply = function(out, a, b) {
+	quat.multiply = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    var ax = a[0], ay = a[1], az = a[2], aw = a[3],
 	        bx = b[0], by = b[1], bz = b[2], bw = b[3];
 
@@ -4311,12 +4327,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Rotates a quaternion by the given angle about the X axis
 	 *
-	 * @param {quat} out quat receiving operation result
 	 * @param {quat} a quat to rotate
 	 * @param {number} rad angle (in radians) to rotate
 	 * @returns {quat} out
 	 */
-	quat.rotateX = function (out, a, rad) {
+	quat.rotateX = function (a, rad) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    rad *= 0.5; 
 
 	    var ax = a[0], ay = a[1], az = a[2], aw = a[3],
@@ -4332,12 +4348,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Rotates a quaternion by the given angle about the Y axis
 	 *
-	 * @param {quat} out quat receiving operation result
 	 * @param {quat} a quat to rotate
 	 * @param {number} rad angle (in radians) to rotate
 	 * @returns {quat} out
 	 */
-	quat.rotateY = function (out, a, rad) {
+	quat.rotateY = function (a, rad) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    rad *= 0.5; 
 
 	    var ax = a[0], ay = a[1], az = a[2], aw = a[3],
@@ -4353,12 +4369,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Rotates a quaternion by the given angle about the Z axis
 	 *
-	 * @param {quat} out quat receiving operation result
 	 * @param {quat} a quat to rotate
 	 * @param {number} rad angle (in radians) to rotate
 	 * @returns {quat} out
 	 */
-	quat.rotateZ = function (out, a, rad) {
+	quat.rotateZ = function (a, rad) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    rad *= 0.5; 
 
 	    var ax = a[0], ay = a[1], az = a[2], aw = a[3],
@@ -4376,11 +4392,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Assumes that quaternion is 1 unit in length.
 	 * Any existing W component will be ignored.
 	 *
-	 * @param {quat} out the receiving quaternion
 	 * @param {quat} a quat to calculate W component of
 	 * @returns {quat} out
 	 */
-	quat.calculateW = function (out, a) {
+	quat.calculateW = function (a) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    var x = a[0], y = a[1], z = a[2];
 
 	    out[0] = x;
@@ -4403,7 +4419,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Performs a linear interpolation between two quat's
 	 *
-	 * @param {quat} out the receiving quaternion
 	 * @param {quat} a the first operand
 	 * @param {quat} b the second operand
 	 * @param {Number} t interpolation amount between the two inputs
@@ -4415,13 +4430,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Performs a spherical linear interpolation between two quat
 	 *
-	 * @param {quat} out the receiving quaternion
 	 * @param {quat} a the first operand
 	 * @param {quat} b the second operand
 	 * @param {Number} t interpolation amount between the two inputs
 	 * @returns {quat} out
 	 */
-	quat.slerp = function (out, a, b, t) {
+	quat.slerp = function (a, b, t) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    // benchmarks:
 	    //    http://jsperf.com/quaternion-slerp-implementations
 
@@ -4465,7 +4480,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Performs a spherical linear interpolation with two control points
 	 *
-	 * @param {quat} out the receiving quaternion
 	 * @param {quat} a the first operand
 	 * @param {quat} b the second operand
 	 * @param {quat} c the third operand
@@ -4474,26 +4488,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @returns {quat} out
 	 */
 	quat.sqlerp = (function () {
-	  var temp1 = quat.create();
-	  var temp2 = quat.create();
-	  
-	  return function (out, a, b, c, d, t) {
-	    quat.slerp(temp1, a, d, t);
-	    quat.slerp(temp2, b, c, t);
-	    quat.slerp(out, temp1, temp2, 2 * t * (1 - t));
-	    
-	    return out;
+	  return function (a, b, c, d, t) {
+	      var temp1 = quat.slerp(a, d, t);
+	      var temp2 = quat.slerp(b, c, t);
+	    return quat.slerp(temp1, temp2, 2 * t * (1 - t));
 	  };
 	}());
 
 	/**
 	 * Calculates the inverse of a quat
 	 *
-	 * @param {quat} out the receiving quaternion
 	 * @param {quat} a quat to calculate inverse of
 	 * @returns {quat} out
 	 */
-	quat.invert = function(out, a) {
+	quat.invert = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3],
 	        dot = a0*a0 + a1*a1 + a2*a2 + a3*a3,
 	        invDot = dot ? 1.0/dot : 0;
@@ -4511,11 +4520,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Calculates the conjugate of a quat
 	 * If the quaternion is normalized, this function is faster than quat.inverse and produces the same result.
 	 *
-	 * @param {quat} out the receiving quaternion
 	 * @param {quat} a quat to calculate conjugate of
 	 * @returns {quat} out
 	 */
-	quat.conjugate = function (out, a) {
+	quat.conjugate = function (a) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    out[0] = -a[0];
 	    out[1] = -a[1];
 	    out[2] = -a[2];
@@ -4556,7 +4565,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Normalize a quat
 	 *
-	 * @param {quat} out the receiving quaternion
 	 * @param {quat} a quaternion to normalize
 	 * @returns {quat} out
 	 * @function
@@ -4569,12 +4577,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * NOTE: The resultant quaternion is not normalized, so you should be sure
 	 * to renormalize the quaternion yourself where necessary.
 	 *
-	 * @param {quat} out the receiving quaternion
 	 * @param {mat3} m rotation matrix
 	 * @returns {quat} out
 	 * @function
 	 */
-	quat.fromMat3 = function(out, m) {
+	quat.fromMat3 = function(m) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    // Algorithm in Ken Shoemake's article in 1987 SIGGRAPH course notes
 	    // article "Quaternion Calculus and Fast Animation".
 	    var fTrace = m[0] + m[4] + m[8];
@@ -4641,7 +4649,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 7 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
@@ -4722,7 +4730,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {vec3} a the source vector
 	 * @returns {vec3} out
 	 */
-	vec3.copy = function(out, a) {
+	vec3.copy = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	    out[0] = a[0];
 	    out[1] = a[1];
 	    out[2] = a[2];
@@ -4738,7 +4747,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {Number} z Z component
 	 * @returns {vec3} out
 	 */
-	vec3.set = function(out, x, y, z) {
+	vec3.set = function(x, y, z) {
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	    out[0] = x;
 	    out[1] = y;
 	    out[2] = z;
@@ -4753,7 +4763,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {vec3} b the second operand
 	 * @returns {vec3} out
 	 */
-	vec3.add = function(out, a, b) {
+	vec3.add = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	    out[0] = a[0] + b[0];
 	    out[1] = a[1] + b[1];
 	    out[2] = a[2] + b[2];
@@ -4768,7 +4779,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {vec3} b the second operand
 	 * @returns {vec3} out
 	 */
-	vec3.subtract = function(out, a, b) {
+	vec3.subtract = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	    out[0] = a[0] - b[0];
 	    out[1] = a[1] - b[1];
 	    out[2] = a[2] - b[2];
@@ -4789,7 +4801,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {vec3} b the second operand
 	 * @returns {vec3} out
 	 */
-	vec3.multiply = function(out, a, b) {
+	vec3.multiply = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	    out[0] = a[0] * b[0];
 	    out[1] = a[1] * b[1];
 	    out[2] = a[2] * b[2];
@@ -4810,7 +4823,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {vec3} b the second operand
 	 * @returns {vec3} out
 	 */
-	vec3.divide = function(out, a, b) {
+	vec3.divide = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	    out[0] = a[0] / b[0];
 	    out[1] = a[1] / b[1];
 	    out[2] = a[2] / b[2];
@@ -4830,7 +4844,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {vec3} a vector to ceil
 	 * @returns {vec3} out
 	 */
-	vec3.ceil = function (out, a) {
+	vec3.ceil = function (a) {
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	    out[0] = Math.ceil(a[0]);
 	    out[1] = Math.ceil(a[1]);
 	    out[2] = Math.ceil(a[2]);
@@ -4844,7 +4859,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {vec3} a vector to floor
 	 * @returns {vec3} out
 	 */
-	vec3.floor = function (out, a) {
+	vec3.floor = function (a) {
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	    out[0] = Math.floor(a[0]);
 	    out[1] = Math.floor(a[1]);
 	    out[2] = Math.floor(a[2]);
@@ -4859,7 +4875,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {vec3} b the second operand
 	 * @returns {vec3} out
 	 */
-	vec3.min = function(out, a, b) {
+	vec3.min = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	    out[0] = Math.min(a[0], b[0]);
 	    out[1] = Math.min(a[1], b[1]);
 	    out[2] = Math.min(a[2], b[2]);
@@ -4874,7 +4891,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {vec3} b the second operand
 	 * @returns {vec3} out
 	 */
-	vec3.max = function(out, a, b) {
+	vec3.max = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	    out[0] = Math.max(a[0], b[0]);
 	    out[1] = Math.max(a[1], b[1]);
 	    out[2] = Math.max(a[2], b[2]);
@@ -4888,7 +4906,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {vec3} a vector to round
 	 * @returns {vec3} out
 	 */
-	vec3.round = function (out, a) {
+	vec3.round = function (a) {
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	    out[0] = Math.round(a[0]);
 	    out[1] = Math.round(a[1]);
 	    out[2] = Math.round(a[2]);
@@ -4903,7 +4922,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {Number} b amount to scale the vector by
 	 * @returns {vec3} out
 	 */
-	vec3.scale = function(out, a, b) {
+	vec3.scale = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	    out[0] = a[0] * b;
 	    out[1] = a[1] * b;
 	    out[2] = a[2] * b;
@@ -4919,7 +4939,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {Number} scale the amount to scale b by before adding
 	 * @returns {vec3} out
 	 */
-	vec3.scaleAndAdd = function(out, a, b, scale) {
+	vec3.scaleAndAdd = function(a, b, scale) {
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	    out[0] = a[0] + (b[0] * scale);
 	    out[1] = a[1] + (b[1] * scale);
 	    out[2] = a[2] + (b[2] * scale);
@@ -5011,7 +5032,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {vec3} a vector to negate
 	 * @returns {vec3} out
 	 */
-	vec3.negate = function(out, a) {
+	vec3.negate = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	    out[0] = -a[0];
 	    out[1] = -a[1];
 	    out[2] = -a[2];
@@ -5025,7 +5047,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {vec3} a vector to invert
 	 * @returns {vec3} out
 	 */
-	vec3.inverse = function(out, a) {
+	vec3.inverse = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	  out[0] = 1.0 / a[0];
 	  out[1] = 1.0 / a[1];
 	  out[2] = 1.0 / a[2];
@@ -5039,7 +5062,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {vec3} a vector to normalize
 	 * @returns {vec3} out
 	 */
-	vec3.normalize = function(out, a) {
+	vec3.normalize = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	    var x = a[0],
 	        y = a[1],
 	        z = a[2];
@@ -5073,7 +5097,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {vec3} b the second operand
 	 * @returns {vec3} out
 	 */
-	vec3.cross = function(out, a, b) {
+	vec3.cross = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	    var ax = a[0], ay = a[1], az = a[2],
 	        bx = b[0], by = b[1], bz = b[2];
 
@@ -5092,7 +5117,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {Number} t interpolation amount between the two inputs
 	 * @returns {vec3} out
 	 */
-	vec3.lerp = function (out, a, b, t) {
+	vec3.lerp = function (a, b, t) {
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	    var ax = a[0],
 	        ay = a[1],
 	        az = a[2];
@@ -5113,7 +5139,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {Number} t interpolation amount between the two inputs
 	 * @returns {vec3} out
 	 */
-	vec3.hermite = function (out, a, b, c, d, t) {
+	vec3.hermite = function (a, b, c, d, t) {
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	  var factorTimes2 = t * t,
 	      factor1 = factorTimes2 * (2 * t - 3) + 1,
 	      factor2 = factorTimes2 * (t - 2) + t,
@@ -5138,7 +5165,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {Number} t interpolation amount between the two inputs
 	 * @returns {vec3} out
 	 */
-	vec3.bezier = function (out, a, b, c, d, t) {
+	vec3.bezier = function (a, b, c, d, t) {
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	  var inverseFactor = 1 - t,
 	      inverseFactorTimesTwo = inverseFactor * inverseFactor,
 	      factorTimes2 = t * t,
@@ -5161,7 +5189,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {Number} [scale] Length of the resulting vector. If ommitted, a unit vector will be returned
 	 * @returns {vec3} out
 	 */
-	vec3.random = function (out, scale) {
+	vec3.random = function (scale) {
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	    scale = scale || 1.0;
 
 	    var r = glMatrix.RANDOM() * 2.0 * Math.PI;
@@ -5183,7 +5212,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {mat4} m matrix to transform with
 	 * @returns {vec3} out
 	 */
-	vec3.transformMat4 = function(out, a, m) {
+	vec3.transformMat4 = function(a, m) {
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	    var x = a[0], y = a[1], z = a[2],
 	        w = m[3] * x + m[7] * y + m[11] * z + m[15];
 	    w = w || 1.0;
@@ -5201,7 +5231,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {mat4} m the 3x3 matrix to transform with
 	 * @returns {vec3} out
 	 */
-	vec3.transformMat3 = function(out, a, m) {
+	vec3.transformMat3 = function(a, m) {
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	    var x = a[0], y = a[1], z = a[2];
 	    out[0] = x * m[0] + y * m[3] + z * m[6];
 	    out[1] = x * m[1] + y * m[4] + z * m[7];
@@ -5217,7 +5248,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {quat} q quaternion to transform with
 	 * @returns {vec3} out
 	 */
-	vec3.transformQuat = function(out, a, q) {
+	vec3.transformQuat = function(a, q) {
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	    // benchmarks: http://jsperf.com/quaternion-transform-vec3-implementations
 
 	    var x = a[0], y = a[1], z = a[2],
@@ -5244,7 +5276,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {Number} c The angle of rotation
 	 * @returns {vec3} out
 	 */
-	vec3.rotateX = function(out, a, b, c){
+	vec3.rotateX = function(a, b, c){
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	   var p = [], r=[];
 		  //Translate point to the origin
 		  p[0] = a[0] - b[0];
@@ -5272,7 +5305,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {Number} c The angle of rotation
 	 * @returns {vec3} out
 	 */
-	vec3.rotateY = function(out, a, b, c){
+	vec3.rotateY = function(a, b, c){
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	  	var p = [], r=[];
 	  	//Translate point to the origin
 	  	p[0] = a[0] - b[0];
@@ -5300,7 +5334,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {Number} c The angle of rotation
 	 * @returns {vec3} out
 	 */
-	vec3.rotateZ = function(out, a, b, c){
+	vec3.rotateZ = function(a, b, c){
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	  	var p = [], r=[];
 	  	//Translate point to the origin
 	  	p[0] = a[0] - b[0];
@@ -5427,7 +5462,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 8 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
@@ -5508,11 +5543,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Copy the values from one vec4 to another
 	 *
-	 * @param {vec4} out the receiving vector
 	 * @param {vec4} a the source vector
 	 * @returns {vec4} out
 	 */
-	vec4.copy = function(out, a) {
+	vec4.copy = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    out[0] = a[0];
 	    out[1] = a[1];
 	    out[2] = a[2];
@@ -5523,14 +5558,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Set the components of a vec4 to the given values
 	 *
-	 * @param {vec4} out the receiving vector
 	 * @param {Number} x X component
 	 * @param {Number} y Y component
 	 * @param {Number} z Z component
 	 * @param {Number} w W component
 	 * @returns {vec4} out
 	 */
-	vec4.set = function(out, x, y, z, w) {
+	vec4.set = function(x, y, z, w) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    out[0] = x;
 	    out[1] = y;
 	    out[2] = z;
@@ -5541,12 +5576,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Adds two vec4's
 	 *
-	 * @param {vec4} out the receiving vector
 	 * @param {vec4} a the first operand
 	 * @param {vec4} b the second operand
 	 * @returns {vec4} out
 	 */
-	vec4.add = function(out, a, b) {
+	vec4.add = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    out[0] = a[0] + b[0];
 	    out[1] = a[1] + b[1];
 	    out[2] = a[2] + b[2];
@@ -5557,12 +5592,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Subtracts vector b from vector a
 	 *
-	 * @param {vec4} out the receiving vector
 	 * @param {vec4} a the first operand
 	 * @param {vec4} b the second operand
 	 * @returns {vec4} out
 	 */
-	vec4.subtract = function(out, a, b) {
+	vec4.subtract = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    out[0] = a[0] - b[0];
 	    out[1] = a[1] - b[1];
 	    out[2] = a[2] - b[2];
@@ -5579,12 +5614,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Multiplies two vec4's
 	 *
-	 * @param {vec4} out the receiving vector
 	 * @param {vec4} a the first operand
 	 * @param {vec4} b the second operand
 	 * @returns {vec4} out
 	 */
-	vec4.multiply = function(out, a, b) {
+	vec4.multiply = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    out[0] = a[0] * b[0];
 	    out[1] = a[1] * b[1];
 	    out[2] = a[2] * b[2];
@@ -5601,12 +5636,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Divides two vec4's
 	 *
-	 * @param {vec4} out the receiving vector
 	 * @param {vec4} a the first operand
 	 * @param {vec4} b the second operand
 	 * @returns {vec4} out
 	 */
-	vec4.divide = function(out, a, b) {
+	vec4.divide = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    out[0] = a[0] / b[0];
 	    out[1] = a[1] / b[1];
 	    out[2] = a[2] / b[2];
@@ -5623,11 +5658,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Math.ceil the components of a vec4
 	 *
-	 * @param {vec4} out the receiving vector
 	 * @param {vec4} a vector to ceil
 	 * @returns {vec4} out
 	 */
-	vec4.ceil = function (out, a) {
+	vec4.ceil = function (a) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    out[0] = Math.ceil(a[0]);
 	    out[1] = Math.ceil(a[1]);
 	    out[2] = Math.ceil(a[2]);
@@ -5638,11 +5673,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Math.floor the components of a vec4
 	 *
-	 * @param {vec4} out the receiving vector
 	 * @param {vec4} a vector to floor
 	 * @returns {vec4} out
 	 */
-	vec4.floor = function (out, a) {
+	vec4.floor = function (a) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    out[0] = Math.floor(a[0]);
 	    out[1] = Math.floor(a[1]);
 	    out[2] = Math.floor(a[2]);
@@ -5653,12 +5688,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Returns the minimum of two vec4's
 	 *
-	 * @param {vec4} out the receiving vector
 	 * @param {vec4} a the first operand
 	 * @param {vec4} b the second operand
 	 * @returns {vec4} out
 	 */
-	vec4.min = function(out, a, b) {
+	vec4.min = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    out[0] = Math.min(a[0], b[0]);
 	    out[1] = Math.min(a[1], b[1]);
 	    out[2] = Math.min(a[2], b[2]);
@@ -5669,12 +5704,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Returns the maximum of two vec4's
 	 *
-	 * @param {vec4} out the receiving vector
 	 * @param {vec4} a the first operand
 	 * @param {vec4} b the second operand
 	 * @returns {vec4} out
 	 */
-	vec4.max = function(out, a, b) {
+	vec4.max = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    out[0] = Math.max(a[0], b[0]);
 	    out[1] = Math.max(a[1], b[1]);
 	    out[2] = Math.max(a[2], b[2]);
@@ -5685,11 +5720,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Math.round the components of a vec4
 	 *
-	 * @param {vec4} out the receiving vector
 	 * @param {vec4} a vector to round
 	 * @returns {vec4} out
 	 */
-	vec4.round = function (out, a) {
+	vec4.round = function (a) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    out[0] = Math.round(a[0]);
 	    out[1] = Math.round(a[1]);
 	    out[2] = Math.round(a[2]);
@@ -5700,12 +5735,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Scales a vec4 by a scalar number
 	 *
-	 * @param {vec4} out the receiving vector
 	 * @param {vec4} a the vector to scale
 	 * @param {Number} b amount to scale the vector by
 	 * @returns {vec4} out
 	 */
-	vec4.scale = function(out, a, b) {
+	vec4.scale = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    out[0] = a[0] * b;
 	    out[1] = a[1] * b;
 	    out[2] = a[2] * b;
@@ -5716,13 +5751,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Adds two vec4's after scaling the second operand by a scalar value
 	 *
-	 * @param {vec4} out the receiving vector
 	 * @param {vec4} a the first operand
 	 * @param {vec4} b the second operand
 	 * @param {Number} scale the amount to scale b by before adding
 	 * @returns {vec4} out
 	 */
-	vec4.scaleAndAdd = function(out, a, b, scale) {
+	vec4.scaleAndAdd = function(a, b, scale) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    out[0] = a[0] + (b[0] * scale);
 	    out[1] = a[1] + (b[1] * scale);
 	    out[2] = a[2] + (b[2] * scale);
@@ -5815,11 +5850,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Negates the components of a vec4
 	 *
-	 * @param {vec4} out the receiving vector
 	 * @param {vec4} a vector to negate
 	 * @returns {vec4} out
 	 */
-	vec4.negate = function(out, a) {
+	vec4.negate = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    out[0] = -a[0];
 	    out[1] = -a[1];
 	    out[2] = -a[2];
@@ -5830,11 +5865,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Returns the inverse of the components of a vec4
 	 *
-	 * @param {vec4} out the receiving vector
 	 * @param {vec4} a vector to invert
 	 * @returns {vec4} out
 	 */
-	vec4.inverse = function(out, a) {
+	vec4.inverse = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	  out[0] = 1.0 / a[0];
 	  out[1] = 1.0 / a[1];
 	  out[2] = 1.0 / a[2];
@@ -5845,11 +5880,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Normalize a vec4
 	 *
-	 * @param {vec4} out the receiving vector
 	 * @param {vec4} a vector to normalize
 	 * @returns {vec4} out
 	 */
-	vec4.normalize = function(out, a) {
+	vec4.normalize = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    var x = a[0],
 	        y = a[1],
 	        z = a[2],
@@ -5879,13 +5914,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Performs a linear interpolation between two vec4's
 	 *
-	 * @param {vec4} out the receiving vector
 	 * @param {vec4} a the first operand
 	 * @param {vec4} b the second operand
 	 * @param {Number} t interpolation amount between the two inputs
 	 * @returns {vec4} out
 	 */
-	vec4.lerp = function (out, a, b, t) {
+	vec4.lerp = function (a, b, t) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    var ax = a[0],
 	        ay = a[1],
 	        az = a[2],
@@ -5900,11 +5935,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Generates a random vector with the given scale
 	 *
-	 * @param {vec4} out the receiving vector
 	 * @param {Number} [scale] Length of the resulting vector. If ommitted, a unit vector will be returned
 	 * @returns {vec4} out
 	 */
-	vec4.random = function (out, scale) {
+	vec4.random = function (scale) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    scale = scale || 1.0;
 
 	    //TODO: This is a pretty awful way of doing this. Find something better.
@@ -5912,20 +5947,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	    out[1] = glMatrix.RANDOM();
 	    out[2] = glMatrix.RANDOM();
 	    out[3] = glMatrix.RANDOM();
-	    vec4.normalize(out, out);
-	    vec4.scale(out, out, scale);
+	    vec4.normalize(out);
+	    vec4.scale(scale);
 	    return out;
 	};
 
 	/**
 	 * Transforms the vec4 with a mat4.
 	 *
-	 * @param {vec4} out the receiving vector
 	 * @param {vec4} a the vector to transform
 	 * @param {mat4} m matrix to transform with
 	 * @returns {vec4} out
 	 */
-	vec4.transformMat4 = function(out, a, m) {
+	vec4.transformMat4 = function(a, m) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    var x = a[0], y = a[1], z = a[2], w = a[3];
 	    out[0] = m[0] * x + m[4] * y + m[8] * z + m[12] * w;
 	    out[1] = m[1] * x + m[5] * y + m[9] * z + m[13] * w;
@@ -5937,12 +5972,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Transforms the vec4 with a quat
 	 *
-	 * @param {vec4} out the receiving vector
 	 * @param {vec4} a the vector to transform
 	 * @param {quat} q quaternion to transform with
 	 * @returns {vec4} out
 	 */
-	vec4.transformQuat = function(out, a, q) {
+	vec4.transformQuat = function(a, q) {
+	    var out = new glMatrix.ARRAY_TYPE(4);
 	    var x = a[0], y = a[1], z = a[2],
 	        qx = q[0], qy = q[1], qz = q[2], qw = q[3],
 
@@ -6042,7 +6077,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 9 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
@@ -6073,17 +6108,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 	var vec2 = {};
 
-	/**
-	 * Creates a new, empty vec2
-	 *
-	 * @returns {vec2} a new 2D vector
-	 */
-	vec2.create = function() {
-	    var out = new glMatrix.ARRAY_TYPE(2);
-	    out[0] = 0;
-	    out[1] = 0;
-	    return out;
-	};
 
 	/**
 	 * Creates a new vec2 initialized with values from an existing vector
@@ -6115,11 +6139,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Copy the values from one vec2 to another
 	 *
-	 * @param {vec2} out the receiving vector
 	 * @param {vec2} a the source vector
 	 * @returns {vec2} out
 	 */
-	vec2.copy = function(out, a) {
+	vec2.copy = function(a) {
 	    out[0] = a[0];
 	    out[1] = a[1];
 	    return out;
@@ -6128,12 +6151,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Set the components of a vec2 to the given values
 	 *
-	 * @param {vec2} out the receiving vector
 	 * @param {Number} x X component
 	 * @param {Number} y Y component
 	 * @returns {vec2} out
 	 */
-	vec2.set = function(out, x, y) {
+	vec2.set = function(x, y) {
+	    var out = new glMatrix.ARRAY_TYPE(2);
 	    out[0] = x;
 	    out[1] = y;
 	    return out;
@@ -6142,12 +6165,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Adds two vec2's
 	 *
-	 * @param {vec2} out the receiving vector
 	 * @param {vec2} a the first operand
 	 * @param {vec2} b the second operand
 	 * @returns {vec2} out
 	 */
-	vec2.add = function(out, a, b) {
+	vec2.add = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(2);
 	    out[0] = a[0] + b[0];
 	    out[1] = a[1] + b[1];
 	    return out;
@@ -6156,12 +6179,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Subtracts vector b from vector a
 	 *
-	 * @param {vec2} out the receiving vector
 	 * @param {vec2} a the first operand
 	 * @param {vec2} b the second operand
 	 * @returns {vec2} out
 	 */
-	vec2.subtract = function(out, a, b) {
+	vec2.subtract = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(2);
 	    out[0] = a[0] - b[0];
 	    out[1] = a[1] - b[1];
 	    return out;
@@ -6176,12 +6199,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Multiplies two vec2's
 	 *
-	 * @param {vec2} out the receiving vector
 	 * @param {vec2} a the first operand
 	 * @param {vec2} b the second operand
 	 * @returns {vec2} out
 	 */
-	vec2.multiply = function(out, a, b) {
+	vec2.multiply = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(2);
 	    out[0] = a[0] * b[0];
 	    out[1] = a[1] * b[1];
 	    return out;
@@ -6196,12 +6219,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Divides two vec2's
 	 *
-	 * @param {vec2} out the receiving vector
 	 * @param {vec2} a the first operand
 	 * @param {vec2} b the second operand
 	 * @returns {vec2} out
 	 */
-	vec2.divide = function(out, a, b) {
+	vec2.divide = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(2);
 	    out[0] = a[0] / b[0];
 	    out[1] = a[1] / b[1];
 	    return out;
@@ -6216,11 +6239,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Math.ceil the components of a vec2
 	 *
-	 * @param {vec2} out the receiving vector
 	 * @param {vec2} a vector to ceil
 	 * @returns {vec2} out
 	 */
-	vec2.ceil = function (out, a) {
+	vec2.ceil = function (a) {
+	    var out = new glMatrix.ARRAY_TYPE(2);
 	    out[0] = Math.ceil(a[0]);
 	    out[1] = Math.ceil(a[1]);
 	    return out;
@@ -6229,11 +6252,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Math.floor the components of a vec2
 	 *
-	 * @param {vec2} out the receiving vector
 	 * @param {vec2} a vector to floor
 	 * @returns {vec2} out
 	 */
-	vec2.floor = function (out, a) {
+	vec2.floor = function (a) {
+	    var out = new glMatrix.ARRAY_TYPE(2);
 	    out[0] = Math.floor(a[0]);
 	    out[1] = Math.floor(a[1]);
 	    return out;
@@ -6242,12 +6265,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Returns the minimum of two vec2's
 	 *
-	 * @param {vec2} out the receiving vector
 	 * @param {vec2} a the first operand
 	 * @param {vec2} b the second operand
 	 * @returns {vec2} out
 	 */
-	vec2.min = function(out, a, b) {
+	vec2.min = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(2);
 	    out[0] = Math.min(a[0], b[0]);
 	    out[1] = Math.min(a[1], b[1]);
 	    return out;
@@ -6256,12 +6279,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Returns the maximum of two vec2's
 	 *
-	 * @param {vec2} out the receiving vector
 	 * @param {vec2} a the first operand
 	 * @param {vec2} b the second operand
 	 * @returns {vec2} out
 	 */
-	vec2.max = function(out, a, b) {
+	vec2.max = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(2);
 	    out[0] = Math.max(a[0], b[0]);
 	    out[1] = Math.max(a[1], b[1]);
 	    return out;
@@ -6270,11 +6293,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Math.round the components of a vec2
 	 *
-	 * @param {vec2} out the receiving vector
 	 * @param {vec2} a vector to round
 	 * @returns {vec2} out
 	 */
-	vec2.round = function (out, a) {
+	vec2.round = function (a) {
+	    var out = new glMatrix.ARRAY_TYPE(2);
 	    out[0] = Math.round(a[0]);
 	    out[1] = Math.round(a[1]);
 	    return out;
@@ -6283,12 +6306,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Scales a vec2 by a scalar number
 	 *
-	 * @param {vec2} out the receiving vector
 	 * @param {vec2} a the vector to scale
 	 * @param {Number} b amount to scale the vector by
 	 * @returns {vec2} out
 	 */
-	vec2.scale = function(out, a, b) {
+	vec2.scale = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(2);
 	    out[0] = a[0] * b;
 	    out[1] = a[1] * b;
 	    return out;
@@ -6297,13 +6320,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Adds two vec2's after scaling the second operand by a scalar value
 	 *
-	 * @param {vec2} out the receiving vector
+
 	 * @param {vec2} a the first operand
 	 * @param {vec2} b the second operand
 	 * @param {Number} scale the amount to scale b by before adding
 	 * @returns {vec2} out
 	 */
-	vec2.scaleAndAdd = function(out, a, b, scale) {
+	vec2.scaleAndAdd = function(a, b, scale) {
+	    var out = new glMatrix.ARRAY_TYPE(2);
 	    out[0] = a[0] + (b[0] * scale);
 	    out[1] = a[1] + (b[1] * scale);
 	    return out;
@@ -6386,11 +6410,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Negates the components of a vec2
 	 *
-	 * @param {vec2} out the receiving vector
+
 	 * @param {vec2} a vector to negate
 	 * @returns {vec2} out
 	 */
-	vec2.negate = function(out, a) {
+	vec2.negate = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(2);
 	    out[0] = -a[0];
 	    out[1] = -a[1];
 	    return out;
@@ -6399,11 +6424,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Returns the inverse of the components of a vec2
 	 *
-	 * @param {vec2} out the receiving vector
+
 	 * @param {vec2} a vector to invert
 	 * @returns {vec2} out
 	 */
-	vec2.inverse = function(out, a) {
+	vec2.inverse = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(2);
 	  out[0] = 1.0 / a[0];
 	  out[1] = 1.0 / a[1];
 	  return out;
@@ -6412,11 +6438,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Normalize a vec2
 	 *
-	 * @param {vec2} out the receiving vector
+
 	 * @param {vec2} a vector to normalize
 	 * @returns {vec2} out
 	 */
-	vec2.normalize = function(out, a) {
+	vec2.normalize = function(a) {
+	    var out = new glMatrix.ARRAY_TYPE(2);
 	    var x = a[0],
 	        y = a[1];
 	    var len = x*x + y*y;
@@ -6444,12 +6471,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Computes the cross product of two vec2's
 	 * Note that the cross product must by definition produce a 3D vector
 	 *
-	 * @param {vec3} out the receiving vector
 	 * @param {vec2} a the first operand
 	 * @param {vec2} b the second operand
 	 * @returns {vec3} out
 	 */
-	vec2.cross = function(out, a, b) {
+	vec2.cross = function(a, b) {
+	    var out = new glMatrix.ARRAY_TYPE(3);
 	    var z = a[0] * b[1] - a[1] * b[0];
 	    out[0] = out[1] = 0;
 	    out[2] = z;
@@ -6459,13 +6486,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Performs a linear interpolation between two vec2's
 	 *
-	 * @param {vec2} out the receiving vector
 	 * @param {vec2} a the first operand
 	 * @param {vec2} b the second operand
 	 * @param {Number} t interpolation amount between the two inputs
 	 * @returns {vec2} out
 	 */
-	vec2.lerp = function (out, a, b, t) {
+	vec2.lerp = function (a, b, t) {
+	    var out = new glMatrix.ARRAY_TYPE(2);
 	    var ax = a[0],
 	        ay = a[1];
 	    out[0] = ax + t * (b[0] - ax);
@@ -6476,11 +6503,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Generates a random vector with the given scale
 	 *
-	 * @param {vec2} out the receiving vector
 	 * @param {Number} [scale] Length of the resulting vector. If ommitted, a unit vector will be returned
 	 * @returns {vec2} out
 	 */
-	vec2.random = function (out, scale) {
+	vec2.random = function (scale) {
+	    var out = new glMatrix.ARRAY_TYPE(2);
 	    scale = scale || 1.0;
 	    var r = glMatrix.RANDOM() * 2.0 * Math.PI;
 	    out[0] = Math.cos(r) * scale;
@@ -6491,12 +6518,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Transforms the vec2 with a mat2
 	 *
-	 * @param {vec2} out the receiving vector
 	 * @param {vec2} a the vector to transform
 	 * @param {mat2} m matrix to transform with
 	 * @returns {vec2} out
 	 */
-	vec2.transformMat2 = function(out, a, m) {
+	vec2.transformMat2 = function(a, m) {
+	    var out = new glMatrix.ARRAY_TYPE(2);
 	    var x = a[0],
 	        y = a[1];
 	    out[0] = m[0] * x + m[2] * y;
@@ -6507,12 +6534,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Transforms the vec2 with a mat2d
 	 *
-	 * @param {vec2} out the receiving vector
 	 * @param {vec2} a the vector to transform
 	 * @param {mat2d} m matrix to transform with
 	 * @returns {vec2} out
 	 */
-	vec2.transformMat2d = function(out, a, m) {
+	vec2.transformMat2d = function(a, m) {
+	    var out = new glMatrix.ARRAY_TYPE(2);
 	    var x = a[0],
 	        y = a[1];
 	    out[0] = m[0] * x + m[2] * y + m[4];
@@ -6524,12 +6551,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Transforms the vec2 with a mat3
 	 * 3rd vector component is implicitly '1'
 	 *
-	 * @param {vec2} out the receiving vector
 	 * @param {vec2} a the vector to transform
 	 * @param {mat3} m matrix to transform with
 	 * @returns {vec2} out
 	 */
-	vec2.transformMat3 = function(out, a, m) {
+	vec2.transformMat3 = function(a, m) {
+	    var out = new glMatrix.ARRAY_TYPE(2);
 	    var x = a[0],
 	        y = a[1];
 	    out[0] = m[0] * x + m[3] * y + m[6];
@@ -6542,12 +6569,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * 3rd vector component is implicitly '0'
 	 * 4th vector component is implicitly '1'
 	 *
-	 * @param {vec2} out the receiving vector
 	 * @param {vec2} a the vector to transform
 	 * @param {mat4} m matrix to transform with
 	 * @returns {vec2} out
 	 */
-	vec2.transformMat4 = function(out, a, m) {
+	vec2.transformMat4 = function(a, m) {
+	    var out = new glMatrix.ARRAY_TYPE(2);
 	    var x = a[0], 
 	        y = a[1];
 	    out[0] = m[0] * x + m[4] * y + m[12];
