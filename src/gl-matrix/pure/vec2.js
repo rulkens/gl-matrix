@@ -26,6 +26,17 @@ var glMatrix = require("../common.js");
  */
 var vec2 = {};
 
+/**
+ * Creates a new, empty vec2
+ *
+ * @returns {vec2} a new 2D vector
+ */
+vec2.create = function() {
+    var out = new glMatrix.ARRAY_TYPE(2);
+    out[0] = 0;
+    out[1] = 0;
+    return out;
+};
 
 /**
  * Creates a new vec2 initialized with values from an existing vector
