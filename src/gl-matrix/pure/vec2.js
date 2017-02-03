@@ -32,7 +32,7 @@ var vec2 = {};
  * @returns {vec2} a new 2D vector
  */
 vec2.create = function() {
-    var out = new glMatrix.ARRAY_TYPE(2);
+    var out = new glMatrix.PURE_ARRAY_TYPE(2);
     out[0] = 0;
     out[1] = 0;
     return out;
@@ -45,7 +45,7 @@ vec2.create = function() {
  * @returns {vec2} a new 2D vector
  */
 vec2.clone = function(a) {
-    var out = new glMatrix.ARRAY_TYPE(2);
+    var out = new glMatrix.PURE_ARRAY_TYPE(2);
     out[0] = a[0];
     out[1] = a[1];
     return out;
@@ -59,7 +59,7 @@ vec2.clone = function(a) {
  * @returns {vec2} a new 2D vector
  */
 vec2.fromValues = function(x, y) {
-    var out = new glMatrix.ARRAY_TYPE(2);
+    var out = new glMatrix.PURE_ARRAY_TYPE(2);
     out[0] = x;
     out[1] = y;
     return out;
@@ -85,7 +85,7 @@ vec2.copy = function(a) {
  * @returns {vec2} out
  */
 vec2.set = function(x, y) {
-    var out = new glMatrix.ARRAY_TYPE(2);
+    var out = new glMatrix.PURE_ARRAY_TYPE(2);
     out[0] = x;
     out[1] = y;
     return out;
@@ -99,7 +99,7 @@ vec2.set = function(x, y) {
  * @returns {vec2} out
  */
 vec2.add = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(2);
+    var out = new glMatrix.PURE_ARRAY_TYPE(2);
     out[0] = a[0] + b[0];
     out[1] = a[1] + b[1];
     return out;
@@ -113,7 +113,7 @@ vec2.add = function(a, b) {
  * @returns {vec2} out
  */
 vec2.subtract = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(2);
+    var out = new glMatrix.PURE_ARRAY_TYPE(2);
     out[0] = a[0] - b[0];
     out[1] = a[1] - b[1];
     return out;
@@ -133,7 +133,7 @@ vec2.sub = vec2.subtract;
  * @returns {vec2} out
  */
 vec2.multiply = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(2);
+    var out = new glMatrix.PURE_ARRAY_TYPE(2);
     out[0] = a[0] * b[0];
     out[1] = a[1] * b[1];
     return out;
@@ -153,7 +153,7 @@ vec2.mul = vec2.multiply;
  * @returns {vec2} out
  */
 vec2.divide = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(2);
+    var out = new glMatrix.PURE_ARRAY_TYPE(2);
     out[0] = a[0] / b[0];
     out[1] = a[1] / b[1];
     return out;
@@ -172,7 +172,7 @@ vec2.div = vec2.divide;
  * @returns {vec2} out
  */
 vec2.ceil = function (a) {
-    var out = new glMatrix.ARRAY_TYPE(2);
+    var out = new glMatrix.PURE_ARRAY_TYPE(2);
     out[0] = Math.ceil(a[0]);
     out[1] = Math.ceil(a[1]);
     return out;
@@ -185,7 +185,7 @@ vec2.ceil = function (a) {
  * @returns {vec2} out
  */
 vec2.floor = function (a) {
-    var out = new glMatrix.ARRAY_TYPE(2);
+    var out = new glMatrix.PURE_ARRAY_TYPE(2);
     out[0] = Math.floor(a[0]);
     out[1] = Math.floor(a[1]);
     return out;
@@ -199,7 +199,7 @@ vec2.floor = function (a) {
  * @returns {vec2} out
  */
 vec2.min = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(2);
+    var out = new glMatrix.PURE_ARRAY_TYPE(2);
     out[0] = Math.min(a[0], b[0]);
     out[1] = Math.min(a[1], b[1]);
     return out;
@@ -213,7 +213,7 @@ vec2.min = function(a, b) {
  * @returns {vec2} out
  */
 vec2.max = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(2);
+    var out = new glMatrix.PURE_ARRAY_TYPE(2);
     out[0] = Math.max(a[0], b[0]);
     out[1] = Math.max(a[1], b[1]);
     return out;
@@ -226,7 +226,7 @@ vec2.max = function(a, b) {
  * @returns {vec2} out
  */
 vec2.round = function (a) {
-    var out = new glMatrix.ARRAY_TYPE(2);
+    var out = new glMatrix.PURE_ARRAY_TYPE(2);
     out[0] = Math.round(a[0]);
     out[1] = Math.round(a[1]);
     return out;
@@ -240,7 +240,7 @@ vec2.round = function (a) {
  * @returns {vec2} out
  */
 vec2.scale = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(2);
+    var out = new glMatrix.PURE_ARRAY_TYPE(2);
     out[0] = a[0] * b;
     out[1] = a[1] * b;
     return out;
@@ -256,7 +256,7 @@ vec2.scale = function(a, b) {
  * @returns {vec2} out
  */
 vec2.scaleAndAdd = function(a, b, scale) {
-    var out = new glMatrix.ARRAY_TYPE(2);
+    var out = new glMatrix.PURE_ARRAY_TYPE(2);
     out[0] = a[0] + (b[0] * scale);
     out[1] = a[1] + (b[1] * scale);
     return out;
@@ -344,7 +344,7 @@ vec2.sqrLen = vec2.squaredLength;
  * @returns {vec2} out
  */
 vec2.negate = function(a) {
-    var out = new glMatrix.ARRAY_TYPE(2);
+    var out = new glMatrix.PURE_ARRAY_TYPE(2);
     out[0] = -a[0];
     out[1] = -a[1];
     return out;
@@ -358,7 +358,7 @@ vec2.negate = function(a) {
  * @returns {vec2} out
  */
 vec2.inverse = function(a) {
-    var out = new glMatrix.ARRAY_TYPE(2);
+    var out = new glMatrix.PURE_ARRAY_TYPE(2);
   out[0] = 1.0 / a[0];
   out[1] = 1.0 / a[1];
   return out;
@@ -372,7 +372,7 @@ vec2.inverse = function(a) {
  * @returns {vec2} out
  */
 vec2.normalize = function(a) {
-    var out = new glMatrix.ARRAY_TYPE(2);
+    var out = new glMatrix.PURE_ARRAY_TYPE(2);
     var x = a[0],
         y = a[1];
     var len = x*x + y*y;
@@ -405,7 +405,7 @@ vec2.dot = function (a, b) {
  * @returns {vec3} out
  */
 vec2.cross = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
     var z = a[0] * b[1] - a[1] * b[0];
     out[0] = out[1] = 0;
     out[2] = z;
@@ -421,7 +421,7 @@ vec2.cross = function(a, b) {
  * @returns {vec2} out
  */
 vec2.lerp = function (a, b, t) {
-    var out = new glMatrix.ARRAY_TYPE(2);
+    var out = new glMatrix.PURE_ARRAY_TYPE(2);
     var ax = a[0],
         ay = a[1];
     out[0] = ax + t * (b[0] - ax);
@@ -436,7 +436,7 @@ vec2.lerp = function (a, b, t) {
  * @returns {vec2} out
  */
 vec2.random = function (scale) {
-    var out = new glMatrix.ARRAY_TYPE(2);
+    var out = new glMatrix.PURE_ARRAY_TYPE(2);
     scale = scale || 1.0;
     var r = glMatrix.RANDOM() * 2.0 * Math.PI;
     out[0] = Math.cos(r) * scale;
@@ -452,7 +452,7 @@ vec2.random = function (scale) {
  * @returns {vec2} out
  */
 vec2.transformMat2 = function(a, m) {
-    var out = new glMatrix.ARRAY_TYPE(2);
+    var out = new glMatrix.PURE_ARRAY_TYPE(2);
     var x = a[0],
         y = a[1];
     out[0] = m[0] * x + m[2] * y;
@@ -468,7 +468,7 @@ vec2.transformMat2 = function(a, m) {
  * @returns {vec2} out
  */
 vec2.transformMat2d = function(a, m) {
-    var out = new glMatrix.ARRAY_TYPE(2);
+    var out = new glMatrix.PURE_ARRAY_TYPE(2);
     var x = a[0],
         y = a[1];
     out[0] = m[0] * x + m[2] * y + m[4];
@@ -485,7 +485,7 @@ vec2.transformMat2d = function(a, m) {
  * @returns {vec2} out
  */
 vec2.transformMat3 = function(a, m) {
-    var out = new glMatrix.ARRAY_TYPE(2);
+    var out = new glMatrix.PURE_ARRAY_TYPE(2);
     var x = a[0],
         y = a[1];
     out[0] = m[0] * x + m[3] * y + m[6];
@@ -503,7 +503,7 @@ vec2.transformMat3 = function(a, m) {
  * @returns {vec2} out
  */
 vec2.transformMat4 = function(a, m) {
-    var out = new glMatrix.ARRAY_TYPE(2);
+    var out = new glMatrix.PURE_ARRAY_TYPE(2);
     var x = a[0], 
         y = a[1];
     out[0] = m[0] * x + m[4] * y + m[12];

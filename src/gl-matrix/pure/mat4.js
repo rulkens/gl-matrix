@@ -35,7 +35,7 @@ var mat4 = {
  * @returns {mat4} a new 4x4 matrix
  */
 mat4.create = function() {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     out[0] = 1;
     out[1] = 0;
     out[2] = 0;
@@ -62,7 +62,7 @@ mat4.create = function() {
  * @returns {mat4} a new 4x4 matrix
  */
 mat4.clone = function(a) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     out[0] = a[0];
     out[1] = a[1];
     out[2] = a[2];
@@ -89,7 +89,7 @@ mat4.clone = function(a) {
  * @returns {mat4} out
  */
 mat4.copy = function(a) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     out[0] = a[0];
     out[1] = a[1];
     out[2] = a[2];
@@ -131,7 +131,7 @@ mat4.copy = function(a) {
  * @returns {mat4} A new mat4
  */
 mat4.fromValues = function(m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     out[0] = m00;
     out[1] = m01;
     out[2] = m02;
@@ -173,7 +173,7 @@ mat4.fromValues = function(m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22
  * @returns {mat4} out
  */
 mat4.set = function(m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     out[0] = m00;
     out[1] = m01;
     out[2] = m02;
@@ -200,7 +200,7 @@ mat4.set = function(m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, 
  * @returns {mat4} out
  */
 mat4.identity = function() {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     out[0] = 1;
     out[1] = 0;
     out[2] = 0;
@@ -227,7 +227,7 @@ mat4.identity = function() {
  * @returns {mat4} out
  */
 mat4.scalar.transpose = function(a) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     // If we are transposing ourselves we can skip a few steps but have to cache some values
     if (out === a) {
         var a01 = a[1], a02 = a[2], a03 = a[3],
@@ -275,7 +275,7 @@ mat4.scalar.transpose = function(a) {
  * @returns {mat4} out
  */
 mat4.SIMD.transpose = function(a) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     var a0, a1, a2, a3,
         tmp01, tmp23,
         out0, out1, out2, out3;
@@ -317,7 +317,7 @@ mat4.transpose = glMatrix.USE_SIMD ? mat4.SIMD.transpose : mat4.scalar.transpose
  * @returns {mat4} out
  */
 mat4.scalar.invert = function(a) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     var a00 = a[0], a01 = a[1], a02 = a[2], a03 = a[3],
         a10 = a[4], a11 = a[5], a12 = a[6], a13 = a[7],
         a20 = a[8], a21 = a[9], a22 = a[10], a23 = a[11],
@@ -371,7 +371,7 @@ mat4.scalar.invert = function(a) {
  * @returns {mat4} out
  */
 mat4.SIMD.invert = function(a) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
   var row0, row1, row2, row3,
       tmp1,
       minor0, minor1, minor2, minor3,
@@ -479,7 +479,7 @@ mat4.invert = glMatrix.USE_SIMD ? mat4.SIMD.invert : mat4.scalar.invert;
  * @returns {mat4} out
  */
 mat4.scalar.adjoint = function(a) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     var a00 = a[0], a01 = a[1], a02 = a[2], a03 = a[3],
         a10 = a[4], a11 = a[5], a12 = a[6], a13 = a[7],
         a20 = a[8], a21 = a[9], a22 = a[10], a23 = a[11],
@@ -511,7 +511,7 @@ mat4.scalar.adjoint = function(a) {
  * @returns {mat4} out
  */
 mat4.SIMD.adjoint = function(a) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
   var a0, a1, a2, a3;
   var row0, row1, row2, row3;
   var tmp1;
@@ -637,7 +637,7 @@ mat4.determinant = function (a) {
  * @returns {mat4} out
  */
 mat4.SIMD.multiply = function (a, b) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     var a0 = SIMD.Float32x4.load(a, 0);
     var a1 = SIMD.Float32x4.load(a, 4);
     var a2 = SIMD.Float32x4.load(a, 8);
@@ -694,7 +694,7 @@ mat4.SIMD.multiply = function (a, b) {
  * @returns {mat4} out
  */
 mat4.scalar.multiply = function (a, b) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     var a00 = a[0], a01 = a[1], a02 = a[2], a03 = a[3],
         a10 = a[4], a11 = a[5], a12 = a[6], a13 = a[7],
         a20 = a[8], a21 = a[9], a22 = a[10], a23 = a[11],
@@ -750,7 +750,7 @@ mat4.mul = mat4.multiply;
  * @returns {mat4} out
  */
 mat4.scalar.translate = function (a, v) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     var x = v[0], y = v[1], z = v[2],
         a00, a01, a02, a03,
         a10, a11, a12, a13,
@@ -787,7 +787,7 @@ mat4.scalar.translate = function (a, v) {
  * @returns {mat4} out
  */
 mat4.SIMD.translate = function (a, v) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     var a0 = SIMD.Float32x4.load(a, 0),
         a1 = SIMD.Float32x4.load(a, 4),
         a2 = SIMD.Float32x4.load(a, 8),
@@ -827,7 +827,7 @@ mat4.translate = glMatrix.USE_SIMD ? mat4.SIMD.translate : mat4.scalar.translate
  * @returns {mat4} out
  **/
 mat4.scalar.scale = function(a, v) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     var x = v[0], y = v[1], z = v[2];
 
     out[0] = a[0] * x;
@@ -857,7 +857,7 @@ mat4.scalar.scale = function(a, v) {
  * @returns {mat4} out
  **/
 mat4.SIMD.scale = function(a, v) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     var a0, a1, a2;
     var vec = SIMD.Float32x4(v[0], v[1], v[2], 0);
 
@@ -898,7 +898,7 @@ mat4.scale = glMatrix.USE_SIMD ? mat4.SIMD.scale : mat4.scalar.scale;
  * @returns {mat4} out
  */
 mat4.rotate = function (a, rad, axis) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     var x = axis[0], y = axis[1], z = axis[2],
         len = Math.sqrt(x * x + y * y + z * z),
         s, c, t,
@@ -960,7 +960,7 @@ mat4.rotate = function (a, rad, axis) {
  * @returns {mat4} out
  */
 mat4.scalar.rotateX = function (a, rad) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     var s = Math.sin(rad),
         c = Math.cos(rad),
         a10 = a[4],
@@ -1003,7 +1003,7 @@ mat4.scalar.rotateX = function (a, rad) {
  * @returns {mat4} out
  */
 mat4.SIMD.rotateX = function (a, rad) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     var s = SIMD.Float32x4.splat(Math.sin(rad)),
         c = SIMD.Float32x4.splat(Math.cos(rad));
 
@@ -1045,7 +1045,7 @@ mat4.rotateX = glMatrix.USE_SIMD ? mat4.SIMD.rotateX : mat4.scalar.rotateX;
  * @returns {mat4} out
  */
 mat4.scalar.rotateY = function (a, rad) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     var s = Math.sin(rad),
         c = Math.cos(rad),
         a00 = a[0],
@@ -1088,7 +1088,7 @@ mat4.scalar.rotateY = function (a, rad) {
  * @returns {mat4} out
  */
 mat4.SIMD.rotateY = function (a, rad) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     var s = SIMD.Float32x4.splat(Math.sin(rad)),
         c = SIMD.Float32x4.splat(Math.cos(rad));
 
@@ -1130,7 +1130,7 @@ mat4.SIMD.rotateY = function (a, rad) {
  * @returns {mat4} out
  */
 mat4.scalar.rotateZ = function (a, rad) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     var s = Math.sin(rad),
         c = Math.cos(rad),
         a00 = a[0],
@@ -1174,7 +1174,7 @@ mat4.scalar.rotateZ = function (a, rad) {
  * @returns {mat4} out
  */
 mat4.SIMD.rotateZ = function (a, rad) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     var s = SIMD.Float32x4.splat(Math.sin(rad)),
         c = SIMD.Float32x4.splat(Math.cos(rad));
 
@@ -1220,7 +1220,7 @@ mat4.SIMD.rotateZ = function (a, rad) {
  * @returns {mat4} out
  */
 mat4.fromTranslation = function(v) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     out[0] = 1;
     out[1] = 0;
     out[2] = 0;
@@ -1252,7 +1252,7 @@ mat4.fromTranslation = function(v) {
  * @returns {mat4} out
  */
 mat4.fromScaling = function(v) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     out[0] = v[0];
     out[1] = 0;
     out[2] = 0;
@@ -1284,7 +1284,7 @@ mat4.fromScaling = function(v) {
  * @returns {mat4} out
  */
 mat4.fromRotation = function(rad, axis) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     var x = axis[0], y = axis[1], z = axis[2],
         len = Math.sqrt(x * x + y * y + z * z),
         s, c, t;
@@ -1331,7 +1331,7 @@ mat4.fromRotation = function(rad, axis) {
  * @returns {mat4} out
  */
 mat4.fromXRotation = function(rad) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     var s = Math.sin(rad),
         c = Math.cos(rad);
 
@@ -1366,7 +1366,7 @@ mat4.fromXRotation = function(rad) {
  * @returns {mat4} out
  */
 mat4.fromYRotation = function(rad) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     var s = Math.sin(rad),
         c = Math.cos(rad);
 
@@ -1401,7 +1401,7 @@ mat4.fromYRotation = function(rad) {
  * @returns {mat4} out
  */
 mat4.fromZRotation = function(rad) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     var s = Math.sin(rad),
         c = Math.cos(rad);
 
@@ -1440,7 +1440,7 @@ mat4.fromZRotation = function(rad) {
  * @returns {mat4} out
  */
 mat4.fromRotationTranslation = function (q, v) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     // Quaternion math
     var x = q[0], y = q[1], z = q[2], w = q[3],
         x2 = x + x,
@@ -1487,7 +1487,7 @@ mat4.fromRotationTranslation = function (q, v) {
  * @return {vec3} out
  */
 mat4.getTranslation = function (mat) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
   out[0] = mat[12];
   out[1] = mat[13];
   out[2] = mat[14];
@@ -1505,7 +1505,7 @@ mat4.getTranslation = function (mat) {
  * @return {vec3} out
  */
 mat4.getScaling = function (mat) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
   var m11 = mat[0],
       m12 = mat[1],
       m13 = mat[2],
@@ -1533,7 +1533,7 @@ mat4.getScaling = function (mat) {
  * @return {quat} out
  */
 mat4.getRotation = function (mat) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
   // Algorithm taken from http://www.euclideanspace.com/maths/geometry/rotations/conversions/matrixToQuaternion/index.htm
   var trace = mat[0] + mat[5] + mat[10];
   var S = 0;
@@ -1585,7 +1585,7 @@ mat4.getRotation = function (mat) {
  * @returns {mat4} out
  */
 mat4.fromRotationTranslationScale = function (q, v, s) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     // Quaternion math
     var x = q[0], y = q[1], z = q[2], w = q[3],
         x2 = x + x,
@@ -1646,7 +1646,7 @@ mat4.fromRotationTranslationScale = function (q, v, s) {
  * @returns {mat4} out
  */
 mat4.fromRotationTranslationScaleOrigin = function (q, v, s, o) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
   // Quaternion math
   var x = q[0], y = q[1], z = q[2], w = q[3],
       x2 = x + x,
@@ -1700,7 +1700,7 @@ mat4.fromRotationTranslationScaleOrigin = function (q, v, s, o) {
  * @returns {mat4} out
  */
 mat4.fromQuat = function (q) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     var x = q[0], y = q[1], z = q[2], w = q[3],
         x2 = x + x,
         y2 = y + y,
@@ -1751,7 +1751,7 @@ mat4.fromQuat = function (q) {
  * @returns {mat4} out
  */
 mat4.frustum = function (left, right, bottom, top, near, far) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     var rl = 1 / (right - left),
         tb = 1 / (top - bottom),
         nf = 1 / (near - far);
@@ -1784,7 +1784,7 @@ mat4.frustum = function (left, right, bottom, top, near, far) {
  * @returns {mat4} out
  */
 mat4.perspective = function (fovy, aspect, near, far) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     var f = 1.0 / Math.tan(fovy / 2),
         nf = 1 / (near - far);
     out[0] = f / aspect;
@@ -1817,7 +1817,7 @@ mat4.perspective = function (fovy, aspect, near, far) {
  * @returns {mat4} out
  */
 mat4.perspectiveFromFieldOfView = function (fov, near, far) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     var upTan = Math.tan(fov.upDegrees * Math.PI/180.0),
         downTan = Math.tan(fov.downDegrees * Math.PI/180.0),
         leftTan = Math.tan(fov.leftDegrees * Math.PI/180.0),
@@ -1856,7 +1856,7 @@ mat4.perspectiveFromFieldOfView = function (fov, near, far) {
  * @returns {mat4} out
  */
 mat4.ortho = function (left, right, bottom, top, near, far) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     var lr = 1 / (left - right),
         bt = 1 / (bottom - top),
         nf = 1 / (near - far);
@@ -1888,7 +1888,7 @@ mat4.ortho = function (left, right, bottom, top, near, far) {
  * @returns {mat4} out
  */
 mat4.lookAt = function (eye, center, up) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     var x0, x1, x2, y0, y1, y2, z0, z1, z2, len,
         eyex = eye[0],
         eyey = eye[1],
@@ -1998,7 +1998,7 @@ mat4.frob = function (a) {
  * @returns {mat4} out
  */
 mat4.add = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     out[0] = a[0] + b[0];
     out[1] = a[1] + b[1];
     out[2] = a[2] + b[2];
@@ -2027,7 +2027,7 @@ mat4.add = function(a, b) {
  * @returns {mat4} out
  */
 mat4.subtract = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     out[0] = a[0] - b[0];
     out[1] = a[1] - b[1];
     out[2] = a[2] - b[2];
@@ -2062,7 +2062,7 @@ mat4.sub = mat4.subtract;
  * @returns {mat4} out
  */
 mat4.multiplyScalar = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     out[0] = a[0] * b;
     out[1] = a[1] * b;
     out[2] = a[2] * b;
@@ -2091,7 +2091,7 @@ mat4.multiplyScalar = function(a, b) {
  * @returns {mat4} out
  */
 mat4.multiplyScalarAndAdd = function(a, b, scale) {
-    var out = new glMatrix.ARRAY_TYPE(16);
+    var out = new glMatrix.PURE_ARRAY_TYPE(16);
     out[0] = a[0] + (b[0] * scale);
     out[1] = a[1] + (b[1] * scale);
     out[2] = a[2] + (b[2] * scale);

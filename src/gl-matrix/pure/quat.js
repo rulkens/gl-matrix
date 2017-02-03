@@ -35,7 +35,7 @@ var quat = {};
  * @returns {quat} a new quaternion
  */
 quat.create = function() {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     out[0] = 0;
     out[1] = 0;
     out[2] = 0;
@@ -60,7 +60,7 @@ quat.rotationTo = (function() {
     var tmpvec3;
     
     return function(a, b) {
-        var out = new glMatrix.ARRAY_TYPE(4);
+        var out = new glMatrix.PURE_ARRAY_TYPE(4);
         var dot = vec3.dot(a, b);
         if (dot < -0.999999) {
             tmpvec3 = vec3.cross(xUnitVec3, a);
@@ -163,7 +163,7 @@ quat.set = vec4.set;
  * @returns {quat} out
  */
 quat.identity = function() {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     out[0] = 0;
     out[1] = 0;
     out[2] = 0;
@@ -180,7 +180,7 @@ quat.identity = function() {
  * @returns {quat} out
  **/
 quat.setAxisAngle = function(axis, rad) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     rad = rad * 0.5;
     var s = Math.sin(rad);
     out[0] = s * axis[0];
@@ -203,7 +203,7 @@ quat.setAxisAngle = function(axis, rad) {
  * @return {Number}     Angle, in radians, of the rotation
  */
 quat.getAxisAngle = function(q) {
-    var out_axis = new glMatrix.ARRAY_TYPE(3);
+    var out_axis = new glMatrix.PURE_ARRAY_TYPE(3);
     var rad = Math.acos(q[3]) * 2.0;
     var s = Math.sin(rad / 2.0);
     if (s != 0.0) {
@@ -237,7 +237,7 @@ quat.add = vec4.add;
  * @returns {quat} out
  */
 quat.multiply = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     var ax = a[0], ay = a[1], az = a[2], aw = a[3],
         bx = b[0], by = b[1], bz = b[2], bw = b[3];
 
@@ -273,7 +273,7 @@ quat.scale = vec4.scale;
  * @returns {quat} out
  */
 quat.rotateX = function (a, rad) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     rad *= 0.5; 
 
     var ax = a[0], ay = a[1], az = a[2], aw = a[3],
@@ -294,7 +294,7 @@ quat.rotateX = function (a, rad) {
  * @returns {quat} out
  */
 quat.rotateY = function (a, rad) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     rad *= 0.5; 
 
     var ax = a[0], ay = a[1], az = a[2], aw = a[3],
@@ -315,7 +315,7 @@ quat.rotateY = function (a, rad) {
  * @returns {quat} out
  */
 quat.rotateZ = function (a, rad) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     rad *= 0.5; 
 
     var ax = a[0], ay = a[1], az = a[2], aw = a[3],
@@ -337,7 +337,7 @@ quat.rotateZ = function (a, rad) {
  * @returns {quat} out
  */
 quat.calculateW = function (a) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     var x = a[0], y = a[1], z = a[2];
 
     out[0] = x;
@@ -377,7 +377,7 @@ quat.lerp = vec4.lerp;
  * @returns {quat} out
  */
 quat.slerp = function (a, b, t) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     // benchmarks:
     //    http://jsperf.com/quaternion-slerp-implementations
 
@@ -443,7 +443,7 @@ quat.sqlerp = (function () {
  * @returns {quat} out
  */
 quat.invert = function(a) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3],
         dot = a0*a0 + a1*a1 + a2*a2 + a3*a3,
         invDot = dot ? 1.0/dot : 0;
@@ -465,7 +465,7 @@ quat.invert = function(a) {
  * @returns {quat} out
  */
 quat.conjugate = function (a) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     out[0] = -a[0];
     out[1] = -a[1];
     out[2] = -a[2];
@@ -523,7 +523,7 @@ quat.normalize = vec4.normalize;
  * @function
  */
 quat.fromMat3 = function(m) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     // Algorithm in Ken Shoemake's article in 1987 SIGGRAPH course notes
     // article "Quaternion Calculus and Fast Animation".
     var fTrace = m[0] + m[4] + m[8];

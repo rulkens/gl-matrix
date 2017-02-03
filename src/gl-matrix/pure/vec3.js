@@ -32,7 +32,7 @@ var vec3 = {};
  * @returns {vec3} a new 3D vector
  */
 vec3.create = function() {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
     out[0] = 0;
     out[1] = 0;
     out[2] = 0;
@@ -46,7 +46,7 @@ vec3.create = function() {
  * @returns {vec3} a new 3D vector
  */
 vec3.clone = function(a) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
     out[0] = a[0];
     out[1] = a[1];
     out[2] = a[2];
@@ -62,7 +62,7 @@ vec3.clone = function(a) {
  * @returns {vec3} a new 3D vector
  */
 vec3.fromValues = function(x, y, z) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
     out[0] = x;
     out[1] = y;
     out[2] = z;
@@ -77,7 +77,7 @@ vec3.fromValues = function(x, y, z) {
  * @returns {vec3} out
  */
 vec3.copy = function(a) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
     out[0] = a[0];
     out[1] = a[1];
     out[2] = a[2];
@@ -94,7 +94,7 @@ vec3.copy = function(a) {
  * @returns {vec3} out
  */
 vec3.set = function(x, y, z) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
     out[0] = x;
     out[1] = y;
     out[2] = z;
@@ -110,7 +110,7 @@ vec3.set = function(x, y, z) {
  * @returns {vec3} out
  */
 vec3.add = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
     out[0] = a[0] + b[0];
     out[1] = a[1] + b[1];
     out[2] = a[2] + b[2];
@@ -126,7 +126,7 @@ vec3.add = function(a, b) {
  * @returns {vec3} out
  */
 vec3.subtract = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
     out[0] = a[0] - b[0];
     out[1] = a[1] - b[1];
     out[2] = a[2] - b[2];
@@ -148,7 +148,7 @@ vec3.sub = vec3.subtract;
  * @returns {vec3} out
  */
 vec3.multiply = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
     out[0] = a[0] * b[0];
     out[1] = a[1] * b[1];
     out[2] = a[2] * b[2];
@@ -170,7 +170,7 @@ vec3.mul = vec3.multiply;
  * @returns {vec3} out
  */
 vec3.divide = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
     out[0] = a[0] / b[0];
     out[1] = a[1] / b[1];
     out[2] = a[2] / b[2];
@@ -191,7 +191,7 @@ vec3.div = vec3.divide;
  * @returns {vec3} out
  */
 vec3.ceil = function (a) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
     out[0] = Math.ceil(a[0]);
     out[1] = Math.ceil(a[1]);
     out[2] = Math.ceil(a[2]);
@@ -206,7 +206,7 @@ vec3.ceil = function (a) {
  * @returns {vec3} out
  */
 vec3.floor = function (a) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
     out[0] = Math.floor(a[0]);
     out[1] = Math.floor(a[1]);
     out[2] = Math.floor(a[2]);
@@ -222,7 +222,7 @@ vec3.floor = function (a) {
  * @returns {vec3} out
  */
 vec3.min = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
     out[0] = Math.min(a[0], b[0]);
     out[1] = Math.min(a[1], b[1]);
     out[2] = Math.min(a[2], b[2]);
@@ -238,7 +238,7 @@ vec3.min = function(a, b) {
  * @returns {vec3} out
  */
 vec3.max = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
     out[0] = Math.max(a[0], b[0]);
     out[1] = Math.max(a[1], b[1]);
     out[2] = Math.max(a[2], b[2]);
@@ -253,7 +253,7 @@ vec3.max = function(a, b) {
  * @returns {vec3} out
  */
 vec3.round = function (a) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
     out[0] = Math.round(a[0]);
     out[1] = Math.round(a[1]);
     out[2] = Math.round(a[2]);
@@ -269,7 +269,7 @@ vec3.round = function (a) {
  * @returns {vec3} out
  */
 vec3.scale = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
     out[0] = a[0] * b;
     out[1] = a[1] * b;
     out[2] = a[2] * b;
@@ -286,7 +286,7 @@ vec3.scale = function(a, b) {
  * @returns {vec3} out
  */
 vec3.scaleAndAdd = function(a, b, scale) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
     out[0] = a[0] + (b[0] * scale);
     out[1] = a[1] + (b[1] * scale);
     out[2] = a[2] + (b[2] * scale);
@@ -379,7 +379,7 @@ vec3.sqrLen = vec3.squaredLength;
  * @returns {vec3} out
  */
 vec3.negate = function(a) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
     out[0] = -a[0];
     out[1] = -a[1];
     out[2] = -a[2];
@@ -394,7 +394,7 @@ vec3.negate = function(a) {
  * @returns {vec3} out
  */
 vec3.inverse = function(a) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
   out[0] = 1.0 / a[0];
   out[1] = 1.0 / a[1];
   out[2] = 1.0 / a[2];
@@ -409,7 +409,7 @@ vec3.inverse = function(a) {
  * @returns {vec3} out
  */
 vec3.normalize = function(a) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
     var x = a[0],
         y = a[1],
         z = a[2];
@@ -444,7 +444,7 @@ vec3.dot = function (a, b) {
  * @returns {vec3} out
  */
 vec3.cross = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
     var ax = a[0], ay = a[1], az = a[2],
         bx = b[0], by = b[1], bz = b[2];
 
@@ -464,7 +464,7 @@ vec3.cross = function(a, b) {
  * @returns {vec3} out
  */
 vec3.lerp = function (a, b, t) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
     var ax = a[0],
         ay = a[1],
         az = a[2];
@@ -486,7 +486,7 @@ vec3.lerp = function (a, b, t) {
  * @returns {vec3} out
  */
 vec3.hermite = function (a, b, c, d, t) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
   var factorTimes2 = t * t,
       factor1 = factorTimes2 * (2 * t - 3) + 1,
       factor2 = factorTimes2 * (t - 2) + t,
@@ -512,7 +512,7 @@ vec3.hermite = function (a, b, c, d, t) {
  * @returns {vec3} out
  */
 vec3.bezier = function (a, b, c, d, t) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
   var inverseFactor = 1 - t,
       inverseFactorTimesTwo = inverseFactor * inverseFactor,
       factorTimes2 = t * t,
@@ -536,7 +536,7 @@ vec3.bezier = function (a, b, c, d, t) {
  * @returns {vec3} out
  */
 vec3.random = function (scale) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
     scale = scale || 1.0;
 
     var r = glMatrix.RANDOM() * 2.0 * Math.PI;
@@ -559,7 +559,7 @@ vec3.random = function (scale) {
  * @returns {vec3} out
  */
 vec3.transformMat4 = function(a, m) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
     var x = a[0], y = a[1], z = a[2],
         w = m[3] * x + m[7] * y + m[11] * z + m[15];
     w = w || 1.0;
@@ -578,7 +578,7 @@ vec3.transformMat4 = function(a, m) {
  * @returns {vec3} out
  */
 vec3.transformMat3 = function(a, m) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
     var x = a[0], y = a[1], z = a[2];
     out[0] = x * m[0] + y * m[3] + z * m[6];
     out[1] = x * m[1] + y * m[4] + z * m[7];
@@ -595,7 +595,7 @@ vec3.transformMat3 = function(a, m) {
  * @returns {vec3} out
  */
 vec3.transformQuat = function(a, q) {
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
     // benchmarks: http://jsperf.com/quaternion-transform-vec3-implementations
 
     var x = a[0], y = a[1], z = a[2],
@@ -623,7 +623,7 @@ vec3.transformQuat = function(a, q) {
  * @returns {vec3} out
  */
 vec3.rotateX = function(a, b, c){
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
    var p = [], r=[];
 	  //Translate point to the origin
 	  p[0] = a[0] - b[0];
@@ -652,7 +652,7 @@ vec3.rotateX = function(a, b, c){
  * @returns {vec3} out
  */
 vec3.rotateY = function(a, b, c){
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
   	var p = [], r=[];
   	//Translate point to the origin
   	p[0] = a[0] - b[0];
@@ -681,7 +681,7 @@ vec3.rotateY = function(a, b, c){
  * @returns {vec3} out
  */
 vec3.rotateZ = function(a, b, c){
-    var out = new glMatrix.ARRAY_TYPE(3);
+    var out = new glMatrix.PURE_ARRAY_TYPE(3);
   	var p = [], r=[];
   	//Translate point to the origin
   	p[0] = a[0] - b[0];

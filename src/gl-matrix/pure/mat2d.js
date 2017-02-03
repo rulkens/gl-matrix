@@ -46,7 +46,7 @@ var mat2d = {};
  * @returns {mat2d} a new 2x3 matrix
  */
 mat2d.create = function() {
-    var out = new glMatrix.ARRAY_TYPE(6);
+    var out = new glMatrix.PURE_ARRAY_TYPE(6);
     out[0] = 1;
     out[1] = 0;
     out[2] = 0;
@@ -63,7 +63,7 @@ mat2d.create = function() {
  * @returns {mat2d} a new 2x3 matrix
  */
 mat2d.clone = function(a) {
-    var out = new glMatrix.ARRAY_TYPE(6);
+    var out = new glMatrix.PURE_ARRAY_TYPE(6);
     out[0] = a[0];
     out[1] = a[1];
     out[2] = a[2];
@@ -80,7 +80,7 @@ mat2d.clone = function(a) {
  * @returns {mat2d} out
  */
 mat2d.copy = function(a) {
-    var out = new glMatrix.ARRAY_TYPE(6);
+    var out = new glMatrix.PURE_ARRAY_TYPE(6);
     out[0] = a[0];
     out[1] = a[1];
     out[2] = a[2];
@@ -97,7 +97,7 @@ mat2d.copy = function(a) {
  * @returns {mat2d} out
  */
 mat2d.identity = function() {
-    var out = new glMatrix.ARRAY_TYPE(6);
+    var out = new glMatrix.PURE_ARRAY_TYPE(6);
     out[0] = 1;
     out[1] = 0;
     out[2] = 0;
@@ -119,7 +119,7 @@ mat2d.identity = function() {
  * @returns {mat2d} A new mat2d
  */
 mat2d.fromValues = function(a, b, c, d, tx, ty) {
-    var out = new glMatrix.ARRAY_TYPE(6);
+    var out = new glMatrix.PURE_ARRAY_TYPE(6);
     out[0] = a;
     out[1] = b;
     out[2] = c;
@@ -141,7 +141,7 @@ mat2d.fromValues = function(a, b, c, d, tx, ty) {
  * @returns {mat2d} out
  */
 mat2d.set = function(a, b, c, d, tx, ty) {
-    var out = new glMatrix.ARRAY_TYPE(6);
+    var out = new glMatrix.PURE_ARRAY_TYPE(6);
     out[0] = a;
     out[1] = b;
     out[2] = c;
@@ -158,7 +158,7 @@ mat2d.set = function(a, b, c, d, tx, ty) {
  * @returns {mat2d} out
  */
 mat2d.invert = function(a) {
-    var out = new glMatrix.ARRAY_TYPE(6);
+    var out = new glMatrix.PURE_ARRAY_TYPE(6);
     var aa = a[0], ab = a[1], ac = a[2], ad = a[3],
         atx = a[4], aty = a[5];
 
@@ -195,7 +195,7 @@ mat2d.determinant = function (a) {
  * @returns {mat2d} out
  */
 mat2d.multiply = function (a, b) {
-    var out = new glMatrix.ARRAY_TYPE(6);
+    var out = new glMatrix.PURE_ARRAY_TYPE(6);
     var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3], a4 = a[4], a5 = a[5],
         b0 = b[0], b1 = b[1], b2 = b[2], b3 = b[3], b4 = b[4], b5 = b[5];
     out[0] = a0 * b0 + a2 * b1;
@@ -221,7 +221,7 @@ mat2d.mul = mat2d.multiply;
  * @returns {mat2d} out
  */
 mat2d.rotate = function (a, rad) {
-    var out = new glMatrix.ARRAY_TYPE(6);
+    var out = new glMatrix.PURE_ARRAY_TYPE(6);
     var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3], a4 = a[4], a5 = a[5],
         s = Math.sin(rad),
         c = Math.cos(rad);
@@ -242,7 +242,7 @@ mat2d.rotate = function (a, rad) {
  * @returns {mat2d} out
  **/
 mat2d.scale = function(a, v) {
-    var out = new glMatrix.ARRAY_TYPE(6);
+    var out = new glMatrix.PURE_ARRAY_TYPE(6);
     var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3], a4 = a[4], a5 = a[5],
         v0 = v[0], v1 = v[1];
     out[0] = a0 * v0;
@@ -262,7 +262,7 @@ mat2d.scale = function(a, v) {
  * @returns {mat2d} out
  **/
 mat2d.translate = function(a, v) {
-    var out = new glMatrix.ARRAY_TYPE(6);
+    var out = new glMatrix.PURE_ARRAY_TYPE(6);
     var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3], a4 = a[4], a5 = a[5],
         v0 = v[0], v1 = v[1];
     out[0] = a0;
@@ -285,7 +285,7 @@ mat2d.translate = function(a, v) {
  * @returns {mat2d} out
  */
 mat2d.fromRotation = function(rad) {
-    var out = new glMatrix.ARRAY_TYPE(6);
+    var out = new glMatrix.PURE_ARRAY_TYPE(6);
     var s = Math.sin(rad), c = Math.cos(rad);
     out[0] = c;
     out[1] = s;
@@ -307,7 +307,7 @@ mat2d.fromRotation = function(rad) {
  * @returns {mat2d} out
  */
 mat2d.fromScaling = function(v) {
-    var out = new glMatrix.ARRAY_TYPE(6);
+    var out = new glMatrix.PURE_ARRAY_TYPE(6);
     out[0] = v[0];
     out[1] = 0;
     out[2] = 0;
@@ -328,7 +328,7 @@ mat2d.fromScaling = function(v) {
  * @returns {mat2d} out
  */
 mat2d.fromTranslation = function(v) {
-    var out = new glMatrix.ARRAY_TYPE(6);
+    var out = new glMatrix.PURE_ARRAY_TYPE(6);
     out[0] = 1;
     out[1] = 0;
     out[2] = 0;
@@ -367,7 +367,7 @@ mat2d.frob = function (a) {
  * @returns {mat2d} out
  */
 mat2d.add = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(6);
+    var out = new glMatrix.PURE_ARRAY_TYPE(6);
     out[0] = a[0] + b[0];
     out[1] = a[1] + b[1];
     out[2] = a[2] + b[2];
@@ -385,7 +385,7 @@ mat2d.add = function(a, b) {
  * @returns {mat2d} out
  */
 mat2d.subtract = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(6);
+    var out = new glMatrix.PURE_ARRAY_TYPE(6);
     out[0] = a[0] - b[0];
     out[1] = a[1] - b[1];
     out[2] = a[2] - b[2];
@@ -409,7 +409,7 @@ mat2d.sub = mat2d.subtract;
  * @returns {mat2d} out
  */
 mat2d.multiplyScalar = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(6);
+    var out = new glMatrix.PURE_ARRAY_TYPE(6);
     out[0] = a[0] * b;
     out[1] = a[1] * b;
     out[2] = a[2] * b;
@@ -428,7 +428,7 @@ mat2d.multiplyScalar = function(a, b) {
  * @returns {mat2d} out
  */
 mat2d.multiplyScalarAndAdd = function(a, b, scale) {
-    var out = new glMatrix.ARRAY_TYPE(6);
+    var out = new glMatrix.PURE_ARRAY_TYPE(6);
     out[0] = a[0] + (b[0] * scale);
     out[1] = a[1] + (b[1] * scale);
     out[2] = a[2] + (b[2] * scale);

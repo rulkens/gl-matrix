@@ -27,6 +27,7 @@ var glMatrix = {};
 // Configuration Constants
 glMatrix.EPSILON = 0.000001;
 glMatrix.ARRAY_TYPE = (typeof Float32Array !== 'undefined') ? Float32Array : Array;
+glMatrix.PURE_ARRAY_TYPE = Array;
 glMatrix.RANDOM = Math.random;
 glMatrix.ENABLE_SIMD = false;
 
@@ -41,6 +42,15 @@ glMatrix.USE_SIMD = glMatrix.ENABLE_SIMD && glMatrix.SIMD_AVAILABLE;
  */
 glMatrix.setMatrixArrayType = function(type) {
     glMatrix.ARRAY_TYPE = type;
+}
+
+/**
+ * Sets the type of array used when creating new vectors and matrices in the pure api
+ *
+ * @param {Type} type Array type, such as Float32Array or Array
+ */
+glMatrix.setPureMatrixArrayType = function(type) {
+	glMatrix.PURE_ARRAY_TYPE = type;
 }
 
 var degree = Math.PI / 180;

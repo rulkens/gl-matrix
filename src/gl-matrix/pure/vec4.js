@@ -32,7 +32,7 @@ var vec4 = {};
  * @returns {vec4} a new 4D vector
  */
 vec4.create = function() {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     out[0] = 0;
     out[1] = 0;
     out[2] = 0;
@@ -47,7 +47,7 @@ vec4.create = function() {
  * @returns {vec4} a new 4D vector
  */
 vec4.clone = function(a) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     out[0] = a[0];
     out[1] = a[1];
     out[2] = a[2];
@@ -65,7 +65,7 @@ vec4.clone = function(a) {
  * @returns {vec4} a new 4D vector
  */
 vec4.fromValues = function(x, y, z, w) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     out[0] = x;
     out[1] = y;
     out[2] = z;
@@ -80,7 +80,7 @@ vec4.fromValues = function(x, y, z, w) {
  * @returns {vec4} out
  */
 vec4.copy = function(a) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     out[0] = a[0];
     out[1] = a[1];
     out[2] = a[2];
@@ -98,7 +98,7 @@ vec4.copy = function(a) {
  * @returns {vec4} out
  */
 vec4.set = function(x, y, z, w) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     out[0] = x;
     out[1] = y;
     out[2] = z;
@@ -114,7 +114,7 @@ vec4.set = function(x, y, z, w) {
  * @returns {vec4} out
  */
 vec4.add = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     out[0] = a[0] + b[0];
     out[1] = a[1] + b[1];
     out[2] = a[2] + b[2];
@@ -130,7 +130,7 @@ vec4.add = function(a, b) {
  * @returns {vec4} out
  */
 vec4.subtract = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     out[0] = a[0] - b[0];
     out[1] = a[1] - b[1];
     out[2] = a[2] - b[2];
@@ -152,7 +152,7 @@ vec4.sub = vec4.subtract;
  * @returns {vec4} out
  */
 vec4.multiply = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     out[0] = a[0] * b[0];
     out[1] = a[1] * b[1];
     out[2] = a[2] * b[2];
@@ -174,7 +174,7 @@ vec4.mul = vec4.multiply;
  * @returns {vec4} out
  */
 vec4.divide = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     out[0] = a[0] / b[0];
     out[1] = a[1] / b[1];
     out[2] = a[2] / b[2];
@@ -195,7 +195,7 @@ vec4.div = vec4.divide;
  * @returns {vec4} out
  */
 vec4.ceil = function (a) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     out[0] = Math.ceil(a[0]);
     out[1] = Math.ceil(a[1]);
     out[2] = Math.ceil(a[2]);
@@ -210,7 +210,7 @@ vec4.ceil = function (a) {
  * @returns {vec4} out
  */
 vec4.floor = function (a) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     out[0] = Math.floor(a[0]);
     out[1] = Math.floor(a[1]);
     out[2] = Math.floor(a[2]);
@@ -226,7 +226,7 @@ vec4.floor = function (a) {
  * @returns {vec4} out
  */
 vec4.min = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     out[0] = Math.min(a[0], b[0]);
     out[1] = Math.min(a[1], b[1]);
     out[2] = Math.min(a[2], b[2]);
@@ -242,7 +242,7 @@ vec4.min = function(a, b) {
  * @returns {vec4} out
  */
 vec4.max = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     out[0] = Math.max(a[0], b[0]);
     out[1] = Math.max(a[1], b[1]);
     out[2] = Math.max(a[2], b[2]);
@@ -257,7 +257,7 @@ vec4.max = function(a, b) {
  * @returns {vec4} out
  */
 vec4.round = function (a) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     out[0] = Math.round(a[0]);
     out[1] = Math.round(a[1]);
     out[2] = Math.round(a[2]);
@@ -273,7 +273,7 @@ vec4.round = function (a) {
  * @returns {vec4} out
  */
 vec4.scale = function(a, b) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     out[0] = a[0] * b;
     out[1] = a[1] * b;
     out[2] = a[2] * b;
@@ -290,7 +290,7 @@ vec4.scale = function(a, b) {
  * @returns {vec4} out
  */
 vec4.scaleAndAdd = function(a, b, scale) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     out[0] = a[0] + (b[0] * scale);
     out[1] = a[1] + (b[1] * scale);
     out[2] = a[2] + (b[2] * scale);
@@ -387,7 +387,7 @@ vec4.sqrLen = vec4.squaredLength;
  * @returns {vec4} out
  */
 vec4.negate = function(a) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     out[0] = -a[0];
     out[1] = -a[1];
     out[2] = -a[2];
@@ -402,7 +402,7 @@ vec4.negate = function(a) {
  * @returns {vec4} out
  */
 vec4.inverse = function(a) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
   out[0] = 1.0 / a[0];
   out[1] = 1.0 / a[1];
   out[2] = 1.0 / a[2];
@@ -417,7 +417,7 @@ vec4.inverse = function(a) {
  * @returns {vec4} out
  */
 vec4.normalize = function(a) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     var x = a[0],
         y = a[1],
         z = a[2],
@@ -453,7 +453,7 @@ vec4.dot = function (a, b) {
  * @returns {vec4} out
  */
 vec4.lerp = function (a, b, t) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     var ax = a[0],
         ay = a[1],
         az = a[2],
@@ -472,7 +472,7 @@ vec4.lerp = function (a, b, t) {
  * @returns {vec4} out
  */
 vec4.random = function (scale) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     scale = scale || 1.0;
 
     //TODO: This is a pretty awful way of doing this. Find something better.
@@ -493,7 +493,7 @@ vec4.random = function (scale) {
  * @returns {vec4} out
  */
 vec4.transformMat4 = function(a, m) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     var x = a[0], y = a[1], z = a[2], w = a[3];
     out[0] = m[0] * x + m[4] * y + m[8] * z + m[12] * w;
     out[1] = m[1] * x + m[5] * y + m[9] * z + m[13] * w;
@@ -510,7 +510,7 @@ vec4.transformMat4 = function(a, m) {
  * @returns {vec4} out
  */
 vec4.transformQuat = function(a, q) {
-    var out = new glMatrix.ARRAY_TYPE(4);
+    var out = new glMatrix.PURE_ARRAY_TYPE(4);
     var x = a[0], y = a[1], z = a[2],
         qx = q[0], qy = q[1], qz = q[2], qw = q[3],
 
